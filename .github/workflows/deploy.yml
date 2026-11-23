@@ -1,0 +1,36 @@
+name: Deploy website
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the site (unpack the newest zip, then add loose files)
+        run: |
+          mkdir -p _site _tmp
+          z=$(ls -t -- *.zip* 2>/dev/null | head -1 || true)
+          if [ -n "$z" ]; then
+            unzip -q -o "$z" -d _tmp
+            find _tmp -type f ! -path '*/__MACOSX/*' ! -name '.*' -exec cp {} _site/ \;
+          fi
+          for f in *.html *.css *.jpg *.jpeg *.png *.svg *.ico CNAME; do if [ -f "$f" ]; then cp "$f" _site/; fi; done
+          ls -la _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
