@@ -297,7 +297,7 @@ groups = f"""
     <div><p class="eyebrow">Girls football</p><h2>All Girls group</h2><p class="lead">Fridays 6:30–8pm for U10s and U11s. A group built for girls, with the same high standards as every PP session. Girls are welcome in all our mixed groups too.</p>
     {todo()}
     <a class="btn btn-pink arrow" href="contact.html">Ask about a place </a></div>
-    {photo("Girls group photo", "Your All Girls group in action", True)}
+    {photo("Girls group photo", wide=True, src="img/barcelona-girls.jpg", alt="The Player Performance girls squad in their pink and black kit", pos="center 55%")}
   </div>
 </div></section>
 
@@ -349,10 +349,9 @@ gk = f"""
   <ul class="ticks"><li><b>Handling:</b> catching, holding and dealing with crosses</li><li><b>Diving:</b> technique, getting up quickly and staying safe</li><li><b>Footwork:</b> set position, moving across goal and angles</li><li><b>Distribution:</b> throwing, kicking and playing out from the back</li><li><b>Communication:</b> organising the defence and calling for the ball</li></ul></div>
 </div></div></section>
 
-<section><div class="wrap"><div class="grid g2" style="align-items:center;gap:48px">
+<section><div class="wrap"><div style="max-width:760px">
   <div><p class="eyebrow">Meet the coach</p><h2>Joe Marson</h2>
   <p class="lead">We are delighted to bring Joe Marson in as our new goalkeeper coach. A former Mansfield Town goalkeeper, Joe brings first-hand experience from the game and will now be helping the next generation of aspiring goalkeepers.</p></div>
-  {photo("Joe Marson", "A photo of Joe coaching")}
 </div></div></section>
 
 <section class="white"><div class="wrap">
@@ -381,9 +380,9 @@ camps = f"""
 <section class="white" id="dates"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Coming up</p><h2>Camp dates</h2></div></div>
 {todo("Placeholder: send Claude your next camp dates and prices")}
 <div class="grid g3">
-  <div class="card"><h3>Christmas camp</h3><p>Dates to be confirmed</p><div class="price">£—<small>a day</small></div><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
-  <div class="card"><h3>February half term</h3><p>Dates to be confirmed</p><div class="price">£—<small>a day</small></div><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
-  <div class="card"><h3>Easter camp</h3><p>Dates to be confirmed</p><div class="price">£—<small>a day</small></div><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
+  <div class="card"><h3>Christmas camp</h3><p>Dates coming soon</p><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
+  <div class="card"><h3>February half term</h3><p>Dates coming soon</p><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
+  <div class="card"><h3>Easter camp</h3><p>Dates coming soon</p><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
 </div></div></section>
 {cta_band("Don't miss a camp", "Camps fill up fast. Register your interest and we'll tell you first.")}
 """
@@ -412,8 +411,8 @@ tour = f"""
 <section class="white" id="next-year"><div class="wrap">
   <div class="section-head"><div><p class="eyebrow">2027</p><h2>Next year</h2></div><p class="lead">Two trips confirmed. Both fully booked.</p></div>
   <div class="grid g2">
-    <div class="card featured"><span class="badge">Coming back</span>{photo("Barcelona photo", "Barcelona", True)}<span class="tag">Girls</span><h3>Barcelona Girls Cup</h3><p>We're going back to the Barcelona Girls Cup, and this time it's bigger, with more of our girls getting the chance to go.</p>{todo("Dates, ages and price")}<span class="booked">Fully booked</span> <a class="btn btn-line btn-sm arrow" href="contact.html">Join the waiting list </a></div>
-    <div class="card featured"><span class="badge">New for 2027</span>{photo("Benfica trip photo", "Lisbon / Benfica", True)}<h3>Benfica trip</h3><p>A new trip to Lisbon to experience Benfica, one of Europe's most famous clubs.</p>{todo("Who it's for, dates and price")}<span class="booked">Fully booked</span> <a class="btn btn-line btn-sm arrow" href="contact.html">Join the waiting list </a></div>
+    <div class="card featured"><span class="badge">Coming back</span>{photo("Barcelona photo", wide=True, src="img/barcelona-girls.jpg", alt="The Player Performance girls squad", pos="center 55%")}<span class="tag">Girls</span><h3>Barcelona Girls Cup</h3><p>We're going back to the Barcelona Girls Cup, and this time it's bigger, with more of our girls getting the chance to go.</p>{todo("Dates, ages and price")}<span class="booked">Fully booked</span> <a class="btn btn-line btn-sm arrow" href="contact.html">Join the waiting list </a></div>
+    <div class="card featured"><span class="badge">New for 2027</span><h3>Benfica trip</h3><p>A new trip to Lisbon to experience Benfica, one of Europe's most famous clubs.</p>{todo("Who it's for, dates and price")}<span class="booked">Fully booked</span> <a class="btn btn-line btn-sm arrow" href="contact.html">Join the waiting list </a></div>
   </div>
 </div></section>
 {cta_band("Want your child on the next trip?", "Get in touch and we'll let you know as soon as places open.")}
@@ -433,13 +432,12 @@ about = f"""
 </div></div></section>
 <section class="white"><div class="wrap"><div class="section-head"><div><p class="eyebrow">The team</p><h2>Our coaches</h2></div></div>
 <div class="grid g4">
-  <div class="card">{photo("Jaz", "Headshot", True)}<h3>Jaz Goundry</h3></div>
-  <div class="card">{photo("Tomo", "Headshot", True)}<h3>Tomo Usher</h3></div>
-  <div class="card">{photo("Ty", "Headshot", True)}<h3>Ty Short</h3></div>
-  <div class="card">{photo("Joe", "Headshot", True)}<h3>Joe Marson</h3></div>
+  <div class="card"><h3>Jaz Goundry</h3></div>
+  <div class="card"><h3>Tomo Usher</h3></div>
+  <div class="card"><h3>Ty Short</h3></div>
+  <div class="card"><h3>Joe Marson</h3></div>
 </div></div></section>
-<section class="dark"><div class="wrap"><div class="grid g2" style="align-items:center;gap:48px">
-  {photo("PP HQ", "Inside the HQ, the 4G pitch", True)}
+<section class="dark"><div class="wrap"><div style="max-width:760px">
   <div><p class="eyebrow">Our home</p><h2>PP HQ</h2><p class="lead">Our own indoor 4G facility at Springbank House, Sutton-in-Ashfield. Sessions go ahead all year round, whatever the weather.</p>
   <p style="color:rgba(255,255,255,.7)">Units 2 &amp; 3, Springbank House, 2 Craster Street, Sutton-in-Ashfield NG17 5AG</p></div>
 </div></div></section>
@@ -511,8 +509,7 @@ contact = f"""
   <p><b>Email</b><br><a href="mailto:{EMAIL}">{EMAIL}</a></p>
   <p><b>Instagram</b><br><a href="{INSTA}">@playerperformanceuk</a></p>
   <p><b>Facebook</b><br><a href="{FACEBOOK}" target="_blank" rel="noopener">Player Performance on Facebook</a></p>
-  <p><b>TikTok</b><br><a href="{TIKTOK}" target="_blank" rel="noopener">@playerperformanceuk</a></p>
-  {photo("Map or building photo", "The outside of PP HQ", True)}</div>
+  <p><b>TikTok</b><br><a href="{TIKTOK}" target="_blank" rel="noopener">@playerperformanceuk</a></p></div>
 </div></div></section>
 """
 page("contact.html", "Contact | Player Performance", "Contact Player Performance, PP HQ, Sutton-in-Ashfield.", contact)
