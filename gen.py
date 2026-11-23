@@ -88,7 +88,7 @@ def page(file, title, desc, body):
         .then(function () {{ btn.disabled = false; btn.textContent = 'Send message'; }});
     }});
     var tabs = document.querySelectorAll('.tt-tab');
-    function showTab(k) {{ tabs.forEach(function (t) {{ var on = t.id === 'tab-' + k; t.setAttribute('aria-selected', on ? 'true' : 'false'); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; }}); }}
+    function showTab(k) {{ tabs.forEach(function (t) {{ var on = t.id === 'tab-' + k; t.setAttribute('aria-selected', on ? 'true' : 'false'); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; }}); document.querySelectorAll('.price-panel').forEach(function (p) {{ p.hidden = p.dataset.for !== k; }}); }}
     tabs.forEach(function (t) {{ t.addEventListener('click', function () {{ showTab(t.id.slice(4)); }}); }});
     if (tabs.length && /^#tt-(debdale|goalkeeping)$/.test(location.hash)) showTab(location.hash.slice(4));
     var fd = document.querySelector('.full-dialog');
@@ -206,7 +206,7 @@ page("index.html", "Player Performance | Youth football coaching in Sutton-in-As
 TT = {
  "Monday": [("4:30–6pm", "U8s & U9s", "", "few"), ("5:30–7pm", "U10s & U11s", "", "full"), ("6:30–8pm", "U12s & U13s", "High level", "few"), ("7:30–9pm", "U14+", "High level", "full")],
  "Tuesday": [("4:30–6pm", "U9s & U10s", "", "full"), ("5:30–7pm", "U10s & U11s", "High level", "full"), ("6:30–8pm", "U12s & U13s", "High level", "few"), ("7:30–9pm", "U14+", "High level", "full")],
- "Wednesday": [("4–5pm", "Minis U5s & U6s", "", "full"), ("4:30–6pm", "U7s & U8s", "", "few"), ("5:30–7pm", "U9s & U10s", "", "few"), ("6:30–8pm", "U10s & U11s", "", "few"), ("7:30–9pm", "U12s & U13s", "", "few"), ("8:15–9:30pm", "U14+", "High level", "full")],
+ "Wednesday": [("4–5pm", "Minis ages 4 to 6", "", "full"), ("4:30–6pm", "U7s & U8s", "", "few"), ("5:30–7pm", "U9s & U10s", "", "few"), ("6:30–8pm", "U10s & U11s", "", "few"), ("7:30–9pm", "U12s & U13s", "", "few"), ("8:15–9:30pm", "U14+", "High level", "full")],
  "Thursday": [("4:30–6pm", "U9s & U10s", "", "full"), ("5:30–7pm", "U10s & U11s", "High level", "few"), ("6:30–8pm", "U11s & U12s", "High level", "full"), ("7:30–9pm", "U14+", "High level", "full")],
  "Friday": [("4:30–6pm", "U9s & U10s", "High level", "few"), ("5:30–7pm", "U9s & U10s", "High level", "full"), ("6:30–8pm", "All Girls U10s & U11s", "Girls only", "few"), ("7:30–9pm", "U14+", "High level", "full")],
 }
@@ -267,6 +267,11 @@ days = '<div class="tt-tabs" role="tablist" aria-label="Choose a venue">' + "".j
     for n, (k, lab, _) in enumerate(TABS)) + '</div>'
 days += "".join(f'<div class="tt-panel" role="tabpanel" id="tt-{k}" aria-labelledby="tab-{k}"{"" if n == 0 else " hidden"}>{body}</div>' for n, (k, _, body) in enumerate(TABS))
 
+PRICE_VENUES = [("hq", "PP HQ"), ("debdale", "Debdale group sessions"), ("goalkeeping", "Debdale goalkeeping")]
+price_panels = "".join(
+    f'<div class="price-panel" data-for="{k}"{"" if n == 0 else " hidden"}><div class="card" style="max-width:560px"><h3>{lab}</h3><p>Prices coming soon. Get in touch and we\'ll talk you through the options.</p><a class="btn btn-pink btn-sm arrow" href="contact.html">Ask about prices </a></div></div>'
+    for n, (k, lab) in enumerate(PRICE_VENUES))
+
 groups = f"""
 <section class="page-hero"><div class="wrap"><p class="eyebrow">Group sessions</p><h1>Weekly group<br>development</h1>
 <p class="lead">Small groups by age and level, Monday to Friday at PP HQ. 60 and 90 minute sessions available. Indoor venue, so weather cancellations are never an issue.</p>
@@ -295,12 +300,7 @@ groups = f"""
 
 <section><div class="wrap">
   <div class="section-head"><div><p class="eyebrow">Monthly membership</p><h2>Prices</h2></div><p class="lead">Paid monthly by card through Square. Cancel any time with a month's notice.</p></div>
-  {todo("Placeholder: check prices and what's included")}
-  <div class="grid g3">
-    <div class="card"><h3>Minis</h3><div class="price">£32<small>a month</small></div><ul class="ticks"><li>Wednesday 4–5pm</li><li>Ages 3 to 6</li><li>Fun first, ball every minute</li></ul><a class="btn btn-line btn-sm arrow" href="contact.html">Ask about a place </a></div>
-    <div class="card featured"><span class="badge">Most popular</span><h3>1 session a week</h3><div class="price">£77<small>a month</small></div><ul class="ticks"><li>One 90 minute session every week</li><li>Monthly progress report</li><li>Parent portal access</li></ul><a class="btn btn-pink btn-sm arrow" href="contact.html">Ask about a place </a></div>
-    <div class="card"><h3>2 sessions a week</h3><div class="price">£145<small>a month</small></div><ul class="ticks"><li>Two 90 minute sessions every week</li><li>Faster progress</li><li>Monthly progress report</li></ul><a class="btn btn-line btn-sm arrow" href="contact.html">Ask about a place </a></div>
-  </div>
+  {price_panels}
 </div></section>
 
 <section class="dark" id="girls"><div class="wrap">
@@ -482,7 +482,7 @@ page("reviews.html", "Parent reviews | Player Performance", "Reviews from Player
 
 # ---------------------------------------------------------------- FAQs
 QA = [
- ("What ages do you coach?", "We coach children from 4 to 16. Our Minis group is for 5 and 6 year olds, and our groups go up to U14+."),
+ ("What ages do you coach?", "We coach children from 4 to 16. Our Minis group is for 4 to 6 year olds, and our groups go up to U14+."),
  ("Where are sessions?", "Most sessions are at PP HQ, our indoor 4G pitch at Springbank House, 2 Craster Street, Sutton-in-Ashfield NG17 5AG. Our Friday groups and goalkeeping sessions are at Debdale Park Sports Club, Mansfield Woodhouse, NG19 7NS."),
  ("How do I pay?", "Group sessions are a monthly membership paid by card through Square. 1-2-1s are paid in blocks."),
  ("What should my child bring?", "Football boots or astro trainers, shin pads, a water bottle and comfortable sportswear."),
