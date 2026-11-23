@@ -267,10 +267,20 @@ days = '<div class="tt-tabs" role="tablist" aria-label="Choose a venue">' + "".j
     for n, (k, lab, _) in enumerate(TABS)) + '</div>'
 days += "".join(f'<div class="tt-panel" role="tabpanel" id="tt-{k}" aria-labelledby="tab-{k}"{"" if n == 0 else " hidden"}>{body}</div>' for n, (k, _, body) in enumerate(TABS))
 
-PRICE_VENUES = [("hq", "PP HQ"), ("debdale", "Debdale group sessions"), ("goalkeeping", "Debdale goalkeeping")]
+def price_card(title, price, ticks, featured=False):
+    lis = "".join(f"<li>{t}</li>" for t in ticks)
+    return (f'<div class="card{" featured" if featured else ""}"><h3>{title}</h3><div class="price">£{price}<small>a month</small></div>'
+            f'<ul class="ticks">{lis}</ul><a class="btn {"btn-pink" if featured else "btn-line"} btn-sm arrow" href="contact.html">Ask about a place </a></div>')
+PRICES = {
+ "hq": [price_card("Minis", 32, ["1 session a week", "Wednesday 4–5pm", "Ages 4 to 6"]),
+        price_card("90 minute session", 77, ["1 session a week", "90 minutes", "Monthly progress report"], True),
+        price_card("60 minute session", 65, ["1 session a week", "60 minutes", "Monthly progress report"])],
+ "debdale": [price_card("Debdale group sessions", 65, ["1 session a week", "Fridays, 60 minutes", "Debdale Park, Mansfield Woodhouse"], True)],
+ "goalkeeping": [price_card("Debdale goalkeeping", 60, ["1 session a week", "Fridays, 60 minutes", "With Coach Joe Marson"], True)],
+}
 price_panels = "".join(
-    f'<div class="price-panel" data-for="{k}"{"" if n == 0 else " hidden"}><div class="card" style="max-width:560px"><h3>{lab}</h3><p>Prices coming soon. Get in touch and we\'ll talk you through the options.</p><a class="btn btn-pink btn-sm arrow" href="contact.html">Ask about prices </a></div></div>'
-    for n, (k, lab) in enumerate(PRICE_VENUES))
+    f'<div class="price-panel" data-for="{k}"{"" if n == 0 else " hidden"}><div class="grid g3">{"".join(cards)}</div></div>'
+    for n, (k, cards) in enumerate(PRICES.items()))
 
 groups = f"""
 <section class="page-hero"><div class="wrap"><p class="eyebrow">Group sessions</p><h1>Weekly group<br>development</h1>
