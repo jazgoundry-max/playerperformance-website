@@ -15,7 +15,7 @@ SOCIALS = [("Facebook", FACEBOOK, '<svg viewBox="0 0 24 24" aria-hidden="true"><
 SOCIAL_ICONS = "".join(f'<a href="{u}" target="_blank" rel="noopener" aria-label="Player Performance on {n}">{svg}</a>' for n, u, svg in SOCIALS)
 
 NAV = [("index.html", "Home"), ("group-sessions.html", "Group sessions"), ("1-2-1.html", "1-2-1 coaching"),
-       ("goalkeeping.html", "Goalkeeping"), ("camps.html", "Camps"), ("tournaments.html", "Tournaments"), ("about.html", "About"), ("reviews.html", "Reviews"), ("faqs.html", "FAQs"),
+       ("goalkeeping.html", "Goalkeeping"), ("camps.html", "Camps"), ("tournaments.html", "International experiences"), ("about.html", "About"), ("reviews.html", "Reviews"), ("faqs.html", "FAQs"),
        ("contact.html", "Contact")]
 
 
@@ -401,7 +401,7 @@ page("camps.html", "Half term camps | Player Performance", "Half term football c
 
 # ---------------------------------------------------------------- Tournaments
 tour = f"""
-<section class="page-hero"><div class="wrap"><p class="eyebrow">Tournaments</p><h1>Taking PP<br>abroad</h1>
+<section class="page-hero"><div class="wrap"><p class="eyebrow">International experiences</p><h1>Taking PP<br>abroad</h1>
 <p class="lead">Playing in international tournaments gives our players a taste of the game at the next level: new opponents, new styles of football and memories that last for ever.</p>
 <a class="btn btn-pink arrow" href="#next-year">See next year's trips </a></div></section>
 
@@ -428,8 +428,8 @@ tour = f"""
 </div></section>
 {cta_band("Want your child on the next trip?", "Get in touch and we'll let you know as soon as places open.")}
 """
-page("tournaments.html", "Tournaments | Player Performance",
-     "Player Performance international tournaments: the Barcelona Girls Cup, the Paris International Tournament and our 2027 trip to Benfica.", tour)
+page("tournaments.html", "International experiences | Player Performance",
+     "Player Performance international experiences: the Barcelona Girls Cup, the Paris International Tournament and our 2027 trip to Benfica.", tour)
 
 # ---------------------------------------------------------------- About
 about = f"""
