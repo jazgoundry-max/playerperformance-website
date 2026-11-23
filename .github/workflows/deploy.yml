@@ -18,15 +18,19 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Build the site (unpack the newest zip, then add loose files)
+      - name: Build the site
         run: |
           mkdir -p _site _tmp
+          # 1. Photos (and older pages) from the newest zip
           z=$(ls -t -- *.zip* 2>/dev/null | head -1 || true)
           if [ -n "$z" ]; then
             unzip -q -o "$z" -d _tmp
             find _tmp -type f ! -path '*/__MACOSX/*' ! -name '.*' -exec cp {} _site/ \;
           fi
+          # 2. Any loose files in the project
           for f in *.html *.css *.jpg *.jpeg *.png *.svg *.ico CNAME; do if [ -f "$f" ]; then cp "$f" _site/; fi; done
+          # 3. Pages built fresh from gen.py (the single source of the site's words)
+          if [ -f gen.py ]; then SITE_OUT=_site python3 gen.py; fi
           ls -la _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
