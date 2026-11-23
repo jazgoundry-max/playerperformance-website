@@ -5,6 +5,8 @@ import html, pathlib
 import os
 OUT = pathlib.Path(os.environ.get("SITE_OUT") or (pathlib.Path(__file__).parent / "_site"))
 OUT.mkdir(parents=True, exist_ok=True)
+SITE = "https://playerperformance.uk"
+STYLE_V = "20261123"
 PORTAL = "https://pp-portal.azurewebsites.net"
 SIGNIN = PORTAL + "/signin"
 EMAIL = "inquiries@playerperformance.uk"
@@ -30,7 +32,7 @@ def todo(text="Placeholder: tell Claude what this should say"):
     return ""
 
 
-def page(file, title, desc, body):
+def page(file, title, desc, body, extra_head=""):
     nav = "".join(f'<a href="{f}"{" aria-current=\"page\"" if f == file else ""}>{n}</a>' for f, n in NAV)
     foot_links = "".join(f'<a href="{f}">{n}</a>' for f, n in NAV[1:4])
     doc = f"""<!DOCTYPE html>
@@ -40,11 +42,18 @@ def page(file, title, desc, body):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
-<meta name="theme-color" content="#0B0B0D">
+<link rel="canonical" href="{SITE}/{"" if file == "index.html" else file}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Player Performance">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:url" content="{SITE}/{"" if file == "index.html" else file}">
+<meta property="og:image" content="{SITE}/hero-player.jpg">
+<meta name="theme-color" content="#0B0B0D">{extra_head}
 <link rel="icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v={STYLE_V}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -534,4 +543,33 @@ contact = f"""
 </div></div></section>
 """
 page("contact.html", "Contact | Player Performance", "Contact Player Performance, PP HQ, Sutton-in-Ashfield.", contact)
+
+# ---------------------------------------------------------------- Google: old Square links, sitemap, robots
+OLD_LINKS = """
+<script>
+  (function () {
+    var p = location.pathname.toLowerCase(), to = '/';
+    if (/1-2-1|one-to-one|private/.test(p)) to = '/1-2-1.html';
+    else if (/camp|half-term|holiday/.test(p)) to = '/camps.html';
+    else if (/goal/.test(p)) to = '/goalkeeping.html';
+    else if (/tour|barcelona|paris|abroad/.test(p)) to = '/tournaments.html';
+    else if (/pro-training|about/.test(p)) to = '/about.html';
+    else if (/training|session|product|shop|group|development/.test(p)) to = '/group-sessions.html';
+    else if (/contact/.test(p)) to = '/contact.html';
+    else if (/review/.test(p)) to = '/reviews.html';
+    else if (/faq/.test(p)) to = '/faqs.html';
+    location.replace(to);
+  })();
+</script>"""
+notfound = f"""
+<section class="page-hero"><div class="wrap"><p class="eyebrow">Page moved</p><h1>We've got<br>a new website</h1>
+<p class="lead">This page has moved. Taking you to the right place now. If nothing happens, use the buttons below.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-pink arrow" href="/group-sessions.html#timetable">See the timetable </a><a class="btn btn-line" href="/">Home</a></div></div></section>
+"""
+page("404.html", "Page moved | Player Performance", "Player Performance has a new website.", notfound,
+     extra_head='\n<base href="/">\n<meta name="robots" content="noindex">' + OLD_LINKS)
+pages = [f for f, _ in NAV]
+(OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
+    f'  <url><loc>{SITE}/{"" if f == "index.html" else f}</loc></url>\n' for f in pages) + '</urlset>\n', encoding="utf-8")
+(OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 print("built", len(NAV), "pages")
