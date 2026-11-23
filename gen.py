@@ -87,6 +87,10 @@ def page(file, title, desc, body):
         .catch(function () {{ bad.textContent = "Sorry, that didn't send. Please try again, or email us at {EMAIL}."; bad.style.display = 'block'; }})
         .then(function () {{ btn.disabled = false; btn.textContent = 'Send message'; }});
     }});
+    var tabs = document.querySelectorAll('.tt-tab');
+    function showTab(k) {{ tabs.forEach(function (t) {{ var on = t.id === 'tab-' + k; t.setAttribute('aria-selected', on ? 'true' : 'false'); document.getElementById(t.getAttribute('aria-controls')).hidden = !on; }}); }}
+    tabs.forEach(function (t) {{ t.addEventListener('click', function () {{ showTab(t.id.slice(4)); }}); }});
+    if (tabs.length && /^#tt-(debdale|goalkeeping)$/.test(location.hash)) showTab(location.hash.slice(4));
     var fd = document.querySelector('.full-dialog');
     document.querySelectorAll('.js-full').forEach(function (b) {{ b.addEventListener('click', function () {{ if (!fd) return; var g = b.dataset.group; fd.querySelector('.full-group').textContent = g; fd.querySelector('.full-link').href = 'contact.html?waitlist=1&group=' + encodeURIComponent(g); fd.showModal(); }}); }});
     if (fd) {{ fd.querySelector('.full-close').addEventListener('click', function () {{ fd.close(); }}); fd.addEventListener('click', function (e) {{ if (e.target === fd) fd.close(); }}); }}
@@ -242,7 +246,7 @@ def slot_rows(slots, where=""):
     return out
 
 
-days = '<div class="venue-head"><h3>PP HQ</h3><p>Springbank House, 2 Craster Street, Sutton-in-Ashfield NG17 5AG</p></div>'
+hq = '<div class="venue-head"><h3>PP HQ</h3><p>Springbank House, 2 Craster Street, Sutton-in-Ashfield NG17 5AG · Monday to Friday</p></div><div class="days">'
 for d, slots in TT.items():
     note = DAY_NOTE.get(d)
     if note:
@@ -251,10 +255,17 @@ for d, slots in TT.items():
         note_html = f'<div class="day-note"><div>{note[0]}<small>{note[1]}</small></div><a class="btn btn-pink btn-sm arrow" href="contact.html?group={nq}">Contact us </a></div>'
     else:
         note_html = ""
-    days += f'<div class="day"><h3>{d}</h3><div class="day-sub">{DAY_SUB[d]}</div>{slot_rows(slots, f"{d} (PP HQ)")}{note_html}</div>'
-days += '<div class="venue-head"><h3>Debdale Park Sports Club</h3><p>Mansfield Woodhouse, NG19 7NS · Fridays</p></div>'
+    hq += f'<div class="day"><h3>{d}</h3><div class="day-sub">{DAY_SUB[d]}</div>{slot_rows(slots, f"{d} (PP HQ)")}{note_html}</div>'
+hq += '</div>'
+deb_head = '<div class="venue-head"><h3>Debdale Park Sports Club</h3><p>Mansfield Woodhouse, NG19 7NS · Fridays</p></div>'
+deb_panels = []
 for title, slots in DEBDALE:
-    days += f'<div class="day"><h3>Friday</h3><div class="day-sub">{title}</div>{slot_rows(slots, 'Friday (Debdale)' + (' Goalkeeping' if 'Goalkeeping' in title else ''))}</div>'
+    deb_panels.append(deb_head + f'<div class="days"><div class="day"><h3>Friday</h3><div class="day-sub">{title}</div>{slot_rows(slots, "Friday (Debdale)" + (" Goalkeeping" if "Goalkeeping" in title else ""))}</div></div>')
+TABS = [("hq", "PP HQ", hq), ("debdale", "Debdale group sessions", deb_panels[0]), ("goalkeeping", "Debdale goalkeeping", deb_panels[1])]
+days = '<div class="tt-tabs" role="tablist" aria-label="Choose a venue">' + "".join(
+    f'<button type="button" role="tab" id="tab-{k}" aria-controls="tt-{k}" aria-selected="{"true" if n == 0 else "false"}" class="tt-tab">{lab}</button>'
+    for n, (k, lab, _) in enumerate(TABS)) + '</div>'
+days += "".join(f'<div class="tt-panel" role="tabpanel" id="tt-{k}" aria-labelledby="tab-{k}"{"" if n == 0 else " hidden"}>{body}</div>' for n, (k, _, body) in enumerate(TABS))
 
 groups = f"""
 <section class="page-hero"><div class="wrap"><p class="eyebrow">Group sessions</p><h1>Weekly group<br>development</h1>
@@ -273,7 +284,7 @@ groups = f"""
   <div class="section-head"><div><p class="eyebrow">This term</p><h2>Timetable</h2></div><p class="lead">Spaces go quickly. Once your child is signed up, you'll manage everything in the parent portal.</p></div>
   {todo("When live, spaces update automatically from the portal")}
   <div class="legend"><span class="pill full">Full</span><span class="pill few">1 space left</span><span class="pill open">Spaces available</span></div>
-  <div class="days">{days}</div>
+  {days}
 </div></section>
 <dialog class="full-dialog" aria-labelledby="full-title">
   <h3 id="full-title">This group is full</h3>
