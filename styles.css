@@ -230,3 +230,9 @@ button.pill.full:hover { filter: brightness(.95); text-decoration: underline; }
 .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
 .notice.ok { display:none; background: var(--good-tint); color: var(--good); }
 .notice.bad { display:none; background: var(--bad-tint); color: var(--bad); }
+
+.tt-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 22px; }
+.tt-tab { font: inherit; font-weight: 700; font-size: 15px; padding: 12px 20px; border-radius: 999px; border: 2px solid var(--ink); background: var(--white); color: var(--ink); cursor: pointer; }
+.tt-tab[aria-selected="true"] { background: var(--pink); border-color: var(--pink); color: var(--white); }
+.tt-tab:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+.tt-panel .venue-head { margin-top: 0; }
