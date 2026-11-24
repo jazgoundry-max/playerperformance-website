@@ -6,7 +6,7 @@ import os
 OUT = pathlib.Path(os.environ.get("SITE_OUT") or (pathlib.Path(__file__).parent / "_site"))
 OUT.mkdir(parents=True, exist_ok=True)
 SITE = "https://playerperformance.uk"
-STYLE_V = "20261124b"
+STYLE_V = "20261124c"
 PORTAL = "https://pp-portal.azurewebsites.net"
 SIGNIN = PORTAL + "/signin"
 EMAIL = "inquiries@playerperformance.uk"
