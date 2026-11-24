@@ -332,7 +332,7 @@ groups = f"""
 </div></section>
 
 <section class="white"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Already with us?</p><h2>Spare spaces</h2></div></div>
-<p class="lead">When a child can't make it, we offer the space to other PP families as a one-off: £15 for 60 minutes, £17.50 for 75 or 90 minutes. Offers go out at 10am on session days through the parent portal.</p>
+<p class="lead">When a child can't make it, we offer the space to other PP families as a one-off: £15 for 60 minutes, £17.50 for 90 minutes. Offers go out at 10am on session days through the parent portal.</p>
 <a class="btn btn-dark arrow" href="{PORTAL}/parent/spaces">See spare spaces </a></div></section>
 {cta_band("Find the right group", "Not sure which group fits? Tell us your child's age and we'll help.")}
 """
@@ -409,8 +409,7 @@ camps = f"""
 </div></div></section>
 <section class="white" id="dates"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Coming up</p><h2>Camp dates</h2></div></div>
 {todo("Placeholder: send Claude your next camp dates and prices")}
-<div class="grid g3">
-  <div class="card"><h3>Christmas camp</h3><p>Dates coming soon</p><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
+<div class="grid g2">
   <div class="card"><h3>February half term</h3><p>Dates coming soon</p><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
   <div class="card"><h3>Easter camp</h3><p>Dates coming soon</p><a class="btn btn-line btn-sm arrow" href="contact.html">Register interest </a></div>
 </div></div></section>
