@@ -285,7 +285,7 @@ PRICES = {
         price_card("90 minute session", 77, ["1 session a week", "90 minutes", "Monthly progress report"], True),
         price_card("60 minute session", 65, ["1 session a week", "60 minutes", "Monthly progress report"])],
  "debdale": [price_card("Debdale group sessions", 65, ["1 session a week", "Fridays, 60 minutes", "Debdale Park, Mansfield Woodhouse"], True)],
- "goalkeeping": [price_card("Debdale goalkeeping", 60, ["1 session a week", "Fridays, 60 minutes", "FA &amp; UEFA licensed coaches"], True)],
+ "goalkeeping": [price_card("Debdale goalkeeping", 60, ["1 session a week", "Fridays, 60 minutes", "With Coach Joe Marson"], True)],
 }
 price_panels = "".join(
     f'<div class="price-panel" data-for="{k}"{"" if n == 0 else " hidden"}><div class="grid g3">{"".join(cards)}</div></div>'
@@ -460,10 +460,11 @@ about = f"""
   {photo("Team photo", src="img/team.jpg", alt="Three Player Performance coaches in PP kit at PP HQ, the one in the middle holding the Discover Ashfield Best Start Up award", pos="center 70%")}
 </div></div></section>
 <section class="white"><div class="wrap"><div class="section-head"><div><p class="eyebrow">The team</p><h2>Our coaches</h2></div></div>
-<div class="grid g3">
-  <div class="card"><h3>FA &amp; UEFA licensed</h3><p>Every PP coach holds recognised FA and UEFA coaching qualifications.</p></div>
-  <div class="card"><h3>Grassroots to academy</h3><p>Our coaches have worked across grassroots and academy football, so sessions are pitched at the right level for every player.</p></div>
-  <div class="card"><h3>Played the game</h3><p>Between them, our coaches bring professional and semi-professional playing experience into every session.</p></div>
+<div class="grid g4">
+  <div class="card"><h3>Jaz Goundry</h3></div>
+  <div class="card"><h3>Tomo Usher</h3></div>
+  <div class="card"><h3>Ty Short</h3></div>
+  <div class="card"><h3>Joe Marson</h3></div>
 </div></div></section>
 <section class="dark"><div class="wrap"><div style="max-width:760px">
   <div><p class="eyebrow">Our home</p><h2>PP HQ</h2><p class="lead">Our own indoor 4G facility at Springbank House, Sutton-in-Ashfield. Sessions go ahead all year round, whatever the weather.</p>
