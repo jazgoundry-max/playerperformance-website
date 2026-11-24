@@ -6,7 +6,7 @@ import os
 OUT = pathlib.Path(os.environ.get("SITE_OUT") or (pathlib.Path(__file__).parent / "_site"))
 OUT.mkdir(parents=True, exist_ok=True)
 SITE = "https://playerperformance.uk"
-STYLE_V = "20261124d"
+STYLE_V = "20261124e"
 PORTAL = "https://pp-portal.azurewebsites.net"
 SIGNIN = PORTAL + "/signin"
 EMAIL = "inquiries@playerperformance.uk"
@@ -558,9 +558,40 @@ MINDSET_Q = [
 ]
 _mq = json.dumps([{"q": q, "red": r, "amber": a, "green": g} for q, r, a, g in MINDSET_Q])
 mindset = f"""
-<section class="page-hero"><div class="wrap"><p class="eyebrow">Free check-up</p><h1>Mindset</h1>
-<p class="lead">Ten quick questions about how your child thinks and feels on the pitch. Choose the colour that fits best and get their mindset score straight away.</p></div></section>
-<section class="white"><div class="wrap" style="max-width:820px">
+<section class="page-hero"><div class="wrap">
+<a class="btn btn-pink arrow" href="#questionnaire" style="margin-bottom:28px">Mindset questionnaire </a>
+<p class="eyebrow">Mindset</p><h1>Shines in training.<br>A different player on match day?</h1>
+<p class="lead">You're not alone. It's the thing we hear from parents more than anything else, and it's the part of the game nobody teaches.</p></div></section>
+
+<section class="white" id="guide"><div class="wrap"><div class="grid g2 gd-grid">
+  <div class="gd-cover"><img src="guide-cover.jpg" alt="Cover of the free guide Across the White Line: a mindset guide for players aged 10 to 16" loading="lazy"></div>
+  <div>
+    <p class="eyebrow">Free guide · Players aged 10–16</p><h2>Across the White Line</h2>
+    <p class="lead">Our free 12-page guide for parents and players: why confident trainers freeze on match day, and simple tools to help them take their best self across the white line.</p>
+    <form class="form gd-form" novalidate>
+      <h3 style="margin:0">Get the free guide</h3>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+      <label>Your name<input name="parent_name" autocomplete="name" required maxlength="120"></label>
+      <label>Email<input name="parent_email" type="email" autocomplete="email" required maxlength="254"></label>
+      <label>Phone number<input name="phone" type="tel" autocomplete="tel" required maxlength="20"></label>
+      <label class="ms-consent"><span><input type="checkbox" name="consent"> I'm happy for Player Performance to email me the guide and contact me about mindset mentoring.</span></label>
+      <p class="notice bad" role="alert"></p>
+      <p class="notice ok" role="status">Check your inbox, the guide is on its way.</p>
+      <button class="btn btn-pink arrow" type="submit">Send me the guide </button>
+      <p class="gd-privacy">We only use your details to send you the guide and to talk to you about mindset mentoring. We never share them, and you can ask us to delete them at any time.</p>
+    </form>
+  </div>
+</div></div></section>
+
+<section class="dark"><div class="wrap" style="max-width:820px;text-align:center">
+  <p class="eyebrow">1-2-1 mindset mentoring</p><h2>Mindset mentoring, built by an ex-player for players.</h2>
+  <p class="lead" style="margin-left:auto;margin-right:auto;color:rgba(255,255,255,.75)">A complete platform to help your child get past the things holding them back on match day.</p>
+  <a class="btn btn-pink arrow" href="https://wa.me/447955722914?text=Hi%20Jaz%2C%20I%27ve%20read%20Across%20the%20White%20Line%20and%20I%27d%20like%20to%20book%20a%20free%20chat%20about%20my%20child." target="_blank" rel="noopener">Book a free chat </a>
+</div></section>
+
+<section class="white" id="questionnaire"><div class="wrap" style="max-width:820px">
+  <p class="eyebrow">Free check-up</p><h2>Mindset questionnaire</h2>
+  <p class="lead">Ten quick questions about how your child thinks and feels on the pitch. Choose the colour that fits best and get their mindset score straight away.</p>
   <form class="form ms-start" novalidate>
     <h2 style="margin:0">Before you start</h2>
     <div class="hp" aria-hidden="true"><label>Leave this empty<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
@@ -588,6 +619,20 @@ MINDSET_JS = """
 <script>
 (function () {
   var Q = __MQ__, API = '__PORTAL__/api/mindset';
+  var gf = document.querySelector('.gd-form');
+  if (gf) gf.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = gf.querySelector('.notice.bad'), ok = gf.querySelector('.notice.ok'), btn = gf.querySelector('button[type=submit]');
+    bad.style.display = 'none'; ok.style.display = 'none';
+    var em = gf.parent_email.value.trim(), ph = gf.phone.value.trim();
+    if (!gf.parent_name.value.trim() || !/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(em) || !/^[0-9 +()-]{7,20}$/.test(ph)) { bad.textContent = 'Please add your name, a valid email and a phone number.'; bad.style.display = 'block'; return; }
+    if (!gf.consent.checked) { bad.textContent = 'Please tick the box so we can send you the guide.'; bad.style.display = 'block'; return; }
+    btn.disabled = true; btn.textContent = 'Sending...';
+    fetch('__PORTAL__/api/guide', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ parent_name: gf.parent_name.value.trim(), parent_email: em, phone: ph, consent: true, company_website: gf.company_website.value }) })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); ok.style.display = 'block'; gf.reset(); })
+      .catch(function () { bad.textContent = "Sorry, that didn't send. Please try again, or email inquiries@playerperformance.uk."; bad.style.display = 'block'; })
+      .then(function () { btn.disabled = false; btn.textContent = 'Send me the guide'; });
+  });
   var start = document.querySelector('.ms-start'), quiz = document.querySelector('.ms-quiz'), res = document.querySelector('.ms-result');
   if (!start) return;
   var who = {};
@@ -633,7 +678,7 @@ MINDSET_JS = """
   });
 })();
 </script>"""
-page("mindset.html", "Mindset check-up | Player Performance", "A free 10-question mindset check-up for young footballers. Get your child's score straight away.",
+page("mindset.html", "Mindset check-up | Player Performance", "Free mindset guide Across the White Line and a 10-question mindset check-up for young footballers aged 10 to 16.",
      mindset + MINDSET_JS.replace("__MQ__", _mq).replace("__PORTAL__", PORTAL))
 
 # ---------------------------------------------------------------- Google: old Square links, sitemap, robots
