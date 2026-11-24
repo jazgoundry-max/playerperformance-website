@@ -22,7 +22,8 @@ a { color: inherit; }
 .topbar a { color: var(--white); text-decoration: none; white-space: nowrap; }
 .header { background: var(--ink); color: var(--white); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,.08); }
 .header .wrap { display: flex; align-items: center; gap: 22px; min-height: 76px; }
-.logo img { height: 46px; width: auto; }
+.logo { flex-shrink: 0; display: block; }
+.logo img { height: 46px; width: auto; max-width: none; }
 .nav { display: flex; gap: 4px; margin-left: auto; align-items: center; }
 .nav a { text-decoration: none; font-size: 14px; font-weight: 500; padding: 9px 10px; white-space: nowrap; border-radius: 8px; color: rgba(255,255,255,.86); }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--white); background: rgba(255,255,255,.08); }
@@ -143,7 +144,7 @@ section { padding: 92px 0; }
 .footer .legal { border-top: 1px solid rgba(255,255,255,.1); margin-top: 40px; padding-top: 20px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; }
 
 /* Mobile */
-@media (max-width: 1180px) {
+@media (max-width: 1400px) {
   .menu-btn { display: inline-block; }
   .nav, .header .actions { display: none; }
   .header.open .wrap { flex-wrap: wrap; }
