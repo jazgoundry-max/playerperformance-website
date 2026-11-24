@@ -27,7 +27,9 @@ a { color: inherit; }
 .nav { display: flex; gap: 4px; margin-left: auto; align-items: center; }
 .nav a { text-decoration: none; font-size: 14px; font-weight: 500; padding: 9px 10px; white-space: nowrap; border-radius: 8px; color: rgba(255,255,255,.86); }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--white); background: rgba(255,255,255,.08); }
-.header .actions { display: flex; gap: 10px; align-items: center; }
+.header .actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+.header .wrap { max-width: 1400px; }
+@media (min-width: 1401px) { .header .actions .btn-ghost { display: none; } }
 .menu-btn { display: none; margin-left: auto; background: none; border: 1px solid rgba(255,255,255,.25); color: var(--white); border-radius: 10px; padding: 9px 12px; font: 600 14px var(--body); cursor: pointer; }
 
 /* Buttons */
