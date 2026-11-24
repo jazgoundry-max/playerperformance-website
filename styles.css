@@ -255,3 +255,8 @@ button.pill.full:hover { filter: brightness(.95); text-decoration: underline; }
 .ms-consent span { display:flex; gap:10px; align-items:flex-start; font-weight:500; }
 .ms-consent input { width:18px; height:18px; margin-top:2px; }
 .ms-submit { margin-top:20px; }
+
+.gd-grid { align-items:center; gap:48px; }
+.gd-cover img { width:100%; max-width:420px; margin:0 auto; border-radius:var(--radius); box-shadow:0 18px 40px rgba(11,11,13,.25); }
+.gd-form { margin-top:8px; }
+.gd-privacy { font-size:13px; color:var(--muted); margin:0; }
