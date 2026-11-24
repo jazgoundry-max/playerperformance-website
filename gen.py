@@ -17,7 +17,7 @@ SOCIALS = [("Facebook", FACEBOOK, '<svg viewBox="0 0 24 24" aria-hidden="true"><
 SOCIAL_ICONS = "".join(f'<a href="{u}" target="_blank" rel="noopener" aria-label="Player Performance on {n}">{svg}</a>' for n, u, svg in SOCIALS)
 
 NAV = [("index.html", "Home"), ("group-sessions.html", "Group sessions"), ("1-2-1.html", "1-2-1 coaching"),
-       ("goalkeeping.html", "Goalkeeping"), ("camps.html", "Camps"), ("tournaments.html", "International experiences"), ("about.html", "About"), ("reviews.html", "Reviews"), ("faqs.html", "FAQs"),
+       ("goalkeeping.html", "Goalkeeping"), ("camps.html", "Camps"), ("tournaments.html", "International"), ("about.html", "About"), ("reviews.html", "Reviews"), ("faqs.html", "FAQs"),
        ("contact.html", "Contact")]
 
 
