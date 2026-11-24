@@ -27,6 +27,7 @@ jobs:
           # 2. Any loose files in the project
           for f in *.html *.css *.jpg *.jpeg *.png *.svg *.ico CNAME; do if [ -f "$f" ]; then cp "$f" _site/; fi; done
           # 3. Pages built fresh from gen.py (the single source of the site's words)
+          if [ -f "Across-the-White-Line_.pdf" ]; then cp "Across-the-White-Line_.pdf" _site/across-the-white-line.pdf; (sudo apt-get install -y -qq poppler-utils >/dev/null 2>&1 && pdftoppm -r 90 -jpeg -jpegopt quality=85 -f 1 -l 1 -singlefile "Across-the-White-Line_.pdf" _site/guide-cover) || true; fi
           if [ -f gen.py ]; then SITE_OUT=_site python3 gen.py; fi
           ls -la _site
       - uses: actions/configure-pages@v5
