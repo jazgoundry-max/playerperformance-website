@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Builds the Player Performance website pages from one shared header/footer."""
-import html, pathlib
+import html, json, pathlib
 
 import os
 OUT = pathlib.Path(os.environ.get("SITE_OUT") or (pathlib.Path(__file__).parent / "_site"))
 OUT.mkdir(parents=True, exist_ok=True)
 SITE = "https://playerperformance.uk"
-STYLE_V = "20261124c"
+STYLE_V = "20261124d"
 PORTAL = "https://pp-portal.azurewebsites.net"
 SIGNIN = PORTAL + "/signin"
 EMAIL = "inquiries@playerperformance.uk"
@@ -17,7 +17,7 @@ SOCIALS = [("Facebook", FACEBOOK, '<svg viewBox="0 0 24 24" aria-hidden="true"><
 SOCIAL_ICONS = "".join(f'<a href="{u}" target="_blank" rel="noopener" aria-label="Player Performance on {n}">{svg}</a>' for n, u, svg in SOCIALS)
 
 NAV = [("index.html", "Home"), ("group-sessions.html", "Group sessions"), ("1-2-1.html", "1-2-1 coaching"),
-       ("goalkeeping.html", "Goalkeeping"), ("camps.html", "Camps"), ("tournaments.html", "International"), ("about.html", "About"), ("reviews.html", "Reviews"), ("faqs.html", "FAQs"),
+       ("goalkeeping.html", "Goalkeeping"), ("camps.html", "Camps"), ("tournaments.html", "International"), ("mindset.html", "Mindset"), ("about.html", "About"), ("reviews.html", "Reviews"), ("faqs.html", "FAQs"),
        ("contact.html", "Contact")]
 
 
@@ -542,6 +542,99 @@ contact = f"""
 </div></div></section>
 """
 page("contact.html", "Contact | Player Performance", "Contact Player Performance, PP HQ, Sutton-in-Ashfield.", contact)
+
+# ---------------------------------------------------------------- Mindset check-up
+MINDSET_Q = [
+ ("Making mistakes", "Gets upset or stops trying after a mistake", "Recovers, but it takes a while", "Shakes it off and goes again straight away"),
+ ("Confidence on the ball", "Avoids the ball or gets rid of it quickly", "Confident sometimes, depends on the game", "Wants the ball and is happy to take players on"),
+ ("Effort when tired", "Drops off when it gets hard", "Keeps going most of the time", "Works hard right to the final whistle"),
+ ("Listening to coaches", "Finds it hard to take on feedback", "Listens, but doesn't always try it", "Listens, asks questions and tries new things"),
+ ("Bouncing back after a loss", "Stays down for a long time", "Gets over it after a day or so", "Learns from it and looks forward to the next game"),
+ ("Nerves before games", "Nerves stop them playing their best", "Nervous, but copes once the game starts", "Calm and excited to play"),
+ ("Talking on the pitch", "Very quiet with teammates", "Talks sometimes", "Communicates and encourages others"),
+ ("Under pressure", "Panics or hides when pressed", "Copes in some situations", "Stays calm and makes good decisions"),
+ ("Practising at home", "Rarely practises outside sessions", "Practises now and then", "Practises regularly on their own"),
+ ("Enjoyment", "Often doesn't enjoy football", "Enjoys it most of the time", "Loves playing and can't wait for the next session"),
+]
+_mq = json.dumps([{"q": q, "red": r, "amber": a, "green": g} for q, r, a, g in MINDSET_Q])
+mindset = f"""
+<section class="page-hero"><div class="wrap"><p class="eyebrow">Free check-up</p><h1>Mindset</h1>
+<p class="lead">Ten quick questions about how your child thinks and feels on the pitch. Choose the colour that fits best and get their mindset score straight away.</p></div></section>
+<section class="white"><div class="wrap" style="max-width:820px">
+  <form class="form ms-start" novalidate>
+    <h2 style="margin:0">Before you start</h2>
+    <div class="hp" aria-hidden="true"><label>Leave this empty<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+    <label>Your name<input name="parent_name" autocomplete="name" required maxlength="120"></label>
+    <label>Your email<input name="parent_email" type="email" autocomplete="email" required maxlength="254"></label>
+    <label>Child's first name<input name="child_name" required maxlength="80"></label>
+    <label>Child's age<input name="child_age" inputmode="numeric" maxlength="2"></label>
+    <label class="ms-consent"><span><input type="checkbox" name="consent"> I'm happy for Player Performance to keep these answers and contact me about them.</span></label>
+    <p class="notice bad" role="alert"></p>
+    <button class="btn btn-pink arrow" type="submit">Start the check-up </button>
+  </form>
+  <div class="ms-quiz" hidden>
+    <div class="ms-key"><span class="ms-dot red"></span> Needs work <span class="ms-dot amber"></span> Getting there <span class="ms-dot green"></span> Strong</div>
+    <ol class="ms-list"></ol>
+    <p class="notice bad ms-err" role="alert"></p>
+    <button class="btn btn-pink arrow ms-submit" type="button">See my score </button>
+  </div>
+  <div class="ms-result" hidden>
+    <p class="eyebrow">Your result</p><h2 class="ms-score"></h2><p class="lead ms-msg"></p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-pink arrow" href="group-sessions.html#timetable">See the timetable </a><a class="btn btn-line" href="contact.html">Talk to a coach</a></div>
+  </div>
+</div></section>
+"""
+MINDSET_JS = """
+<script>
+(function () {
+  var Q = __MQ__, API = '__PORTAL__/api/mindset';
+  var start = document.querySelector('.ms-start'), quiz = document.querySelector('.ms-quiz'), res = document.querySelector('.ms-result');
+  if (!start) return;
+  var who = {};
+  var list = quiz.querySelector('.ms-list');
+  Q.forEach(function (item, i) {
+    var li = document.createElement('li'); li.className = 'ms-q';
+    var h = document.createElement('h3'); h.textContent = item.q; li.appendChild(h);
+    ['red', 'amber', 'green'].forEach(function (c) {
+      var lab = document.createElement('label'); lab.className = 'ms-opt ' + c;
+      var inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'q' + i; inp.value = c;
+      var sp = document.createElement('span'); sp.textContent = item[c];
+      lab.appendChild(inp); lab.appendChild(sp); li.appendChild(lab);
+    });
+    list.appendChild(li);
+  });
+  start.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = start.querySelector('.notice.bad'); bad.style.display = 'none';
+    var f = start, email = f.parent_email.value.trim();
+    if (!f.parent_name.value.trim() || !/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(email) || !f.child_name.value.trim()) { bad.textContent = 'Please add your name, a valid email and your child\\'s name.'; bad.style.display = 'block'; return; }
+    if (!f.consent.checked) { bad.textContent = 'Please tick the box so we can keep your answers.'; bad.style.display = 'block'; return; }
+    who = { parent_name: f.parent_name.value.trim(), parent_email: email, child_name: f.child_name.value.trim(), consent: true, company_website: f.company_website.value };
+    var age = parseInt(f.child_age.value, 10); if (age >= 3 && age <= 18) who.child_age = age;
+    start.hidden = true; quiz.hidden = false; quiz.scrollIntoView({ behavior: 'smooth' });
+  });
+  quiz.querySelector('.ms-submit').addEventListener('click', function () {
+    var err = quiz.querySelector('.ms-err'); err.style.display = 'none';
+    var answers = [];
+    for (var i = 0; i < Q.length; i++) { var c = quiz.querySelector('input[name=q' + i + ']:checked'); if (!c) { err.textContent = 'Please choose a colour for every question.'; err.style.display = 'block'; return; } answers.push({ question: Q[i].q, colour: c.value }); }
+    var pts = { red: 0, amber: 1, green: 2 }, score = 0; answers.forEach(function (a) { score += pts[a.colour]; });
+    var max = answers.length * 2, pct = score / max, band = pct >= 0.75 ? 'green' : pct >= 0.45 ? 'amber' : 'red';
+    var btn = this; btn.disabled = true; btn.textContent = 'Working it out...';
+    var body = Object.assign({}, who, { answers: answers });
+    fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+      .then(function (d) {
+        if (d && d.score != null) { score = d.score; max = d.max_score; band = d.band; }
+        var msg = { green: 'A strong mindset. Our sessions will keep pushing ' + who.child_name + ' and build on what is already there.', amber: who.child_name + ' is getting there. Regular sessions with lots of encouragement will help turn ambers into greens.', red: 'There is real room to grow, and that is exactly what we are here for. Small groups or 1-2-1 coaching can make a big difference to ' + who.child_name + '\\'s confidence.' };
+        res.querySelector('.ms-score').innerHTML = '<span class="ms-dot big ' + band + '"></span>' + score + ' / ' + max;
+        res.querySelector('.ms-msg').textContent = msg[band];
+        quiz.hidden = true; res.hidden = false; res.scrollIntoView({ behavior: 'smooth' });
+      });
+  });
+})();
+</script>"""
+page("mindset.html", "Mindset check-up | Player Performance", "A free 10-question mindset check-up for young footballers. Get your child's score straight away.",
+     mindset + MINDSET_JS.replace("__MQ__", _mq).replace("__PORTAL__", PORTAL))
 
 # ---------------------------------------------------------------- Google: old Square links, sitemap, robots
 OLD_LINKS = """
