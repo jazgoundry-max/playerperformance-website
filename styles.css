@@ -53,8 +53,8 @@ section { padding: 92px 0; }
 .dark { background: var(--ink); color: var(--white); }
 .dark .lead { color: rgba(255,255,255,.7); }
 .white { background: var(--white); }
-.section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
-.section-head .lead { margin-bottom: 0; }
+.section-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; margin-bottom: 40px; }
+.section-head .lead { margin: 0 auto; }
 
 /* Hero */
 .hero { padding: 72px 0 84px; background: var(--paper); }
