@@ -482,7 +482,6 @@ careers = f"""
 <section class="white"><div class="wrap" style="max-width:720px">
   <figure style="margin:0 0 16px"><img src="img/careers-coaching.jpg" alt="A Player Performance coach working with a group of young players at PP HQ" loading="lazy" style="width:100%;border-radius:12px"></figure>
   <p style="text-align:center;color:var(--ink-50);font-size:.95rem;margin-bottom:48px">Coaching the next generation at PP HQ, Sutton-in-Ashfield.</p>
-  <p style="font-size:1.15rem;line-height:1.7">Player Performance is looking to add to our coaching team. We coach children aged 4–16, Monday to Friday, from 1-to-1 sessions to groups of 10 — holding a high standard for every player to find their potential and show it on match day.</p>
   <p style="font-size:1.15rem;line-height:1.7">As a coach with us, you'll deliver engaging sessions, develop players and help build an environment where young people genuinely get better. If you think you'd be a good fit, fill in the form below.</p>
 </div></section>
 
