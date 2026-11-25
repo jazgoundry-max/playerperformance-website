@@ -17,7 +17,7 @@ SOCIALS = [("Facebook", FACEBOOK, '<svg viewBox="0 0 24 24" aria-hidden="true"><
 SOCIAL_ICONS = "".join(f'<a href="{u}" target="_blank" rel="noopener" aria-label="Player Performance on {n}">{svg}</a>' for n, u, svg in SOCIALS)
 
 NAV = [("index.html", "Home"), ("group-sessions.html", "Group sessions"), ("1-2-1.html", "1-2-1 coaching"),
-       ("goalkeeping.html", "Goalkeeping"), ("camps.html", "Camps"), ("tournaments.html", "International"), ("mindset.html", "Mindset"), ("about.html", "About"), ("reviews.html", "Reviews"), ("faqs.html", "FAQs"),
+       ("goalkeeping.html", "Goalkeeping"), ("camps.html", "Camps"), ("tournaments.html", "International"), ("mindset.html", "Mindset"), ("about.html", "About"), ("careers.html", "Careers"), ("reviews.html", "Reviews"), ("faqs.html", "FAQs"),
        ("contact.html", "Contact")]
 
 
@@ -473,6 +473,106 @@ about = f"""
 {cta_band()}
 """
 page("about.html", "About us | Player Performance", "About Player Performance, our coaches and PP HQ in Sutton-in-Ashfield.", about)
+
+# ------------------------------------------------------------------ Careers
+careers = f"""
+<section class="page-hero"><div class="wrap"><p class="eyebrow">Careers</p><h1>We're growing our team</h1>
+<p class="lead">Join us. Make a difference.</p></div></section>
+
+<section class="white"><div class="wrap" style="max-width:720px">
+  <figure style="margin:0 0 16px"><img src="img/careers-coaching.jpg" alt="A Player Performance coach working with a group of young players at PP HQ" loading="lazy" style="width:100%;border-radius:12px"></figure>
+  <p style="text-align:center;color:var(--ink-50);font-size:.95rem;margin-bottom:48px">Coaching the next generation at PP HQ, Sutton-in-Ashfield.</p>
+  <p style="font-size:1.15rem;line-height:1.7">Player Performance is looking to add to our coaching team. We coach children aged 4–16, Monday to Friday, from 1-to-1 sessions to groups of 10 — holding a high standard for every player to find their potential and show it on match day.</p>
+  <p style="font-size:1.15rem;line-height:1.7">As a coach with us, you'll deliver engaging sessions, develop players and help build an environment where young people genuinely get better. If you think you'd be a good fit, fill in the form below.</p>
+</div></section>
+
+<section><div class="wrap"><div class="grid g2" style="gap:48px">
+  <div>
+    <h2>Requirements</h2>
+    <ul class="ticks">
+      <li>Experience coaching football</li>
+      <li>FA Level 2 / UEFA C qualification or equivalent</li>
+      <li>Energetic, enthusiastic and passionate about the game</li>
+      <li>Committed to making a positive difference to young players</li>
+      <li>Reliable, professional and able to work independently</li>
+    </ul>
+    <h2 style="margin-top:40px">What you get</h2>
+    <ul class="ticks">
+      <li>1–3 evenings of coaching per week, with flexible opportunities</li>
+      <li>Competitive pay</li>
+      <li>Opportunities to develop your coaching career and gain valuable experience</li>
+      <li>Be part of an ambitious, growing football programme</li>
+    </ul>
+    <p style="margin-top:32px"><b>Any questions?</b><br>Email us at <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+  </div>
+  <form class="form card" id="careers-form" novalidate>
+    <div class="hp" aria-hidden="true"><label>Leave this empty<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+    <h3>Your details</h3>
+    <label>Full name<input name="contact_name" autocomplete="name" required maxlength="120"></label>
+    <label>Email<input name="contact_email" type="email" autocomplete="email" required maxlength="254"></label>
+    <label>Phone<input name="contact_phone" type="tel" autocomplete="tel" maxlength="30"></label>
+    <label>Age<input name="applicant_age" inputmode="numeric" maxlength="2"></label>
+    <label>Location<input name="applicant_location" maxlength="120" placeholder="e.g. Sutton-in-Ashfield"></label>
+
+    <h3 style="margin-top:24px">Football background</h3>
+    <label>Playing experience<textarea name="playing_exp" rows="3" maxlength="1000" placeholder="Where have you played, at what level?"></textarea></label>
+    <label>Coaching experience<textarea name="coaching_exp" rows="3" maxlength="1000" placeholder="Where have you coached, age groups, how long?"></textarea></label>
+    <label>Qualifications<select name="qualifications"><option value="">Choose one</option><option>FA Level 1</option><option>FA Level 2 / UEFA C</option><option>FA Level 3 / UEFA B or higher</option><option>Working towards a qualification</option><option>Other</option></select></label>
+
+    <h3 style="margin-top:24px">Safeguarding</h3>
+    <label>DBS check<select name="dbs_status"><option value="">Choose one</option><option>Yes — Enhanced DBS on the update service</option><option>Yes — Enhanced DBS (not on the update service)</option><option>Yes — Basic DBS</option><option>No — willing to get one</option><option>No</option></select></label>
+    <label>First aid certificate<select name="first_aid"><option value="">Choose one</option><option>Yes — in date</option><option>Yes — expired, willing to renew</option><option>No — willing to get one</option><option>No</option></select></label>
+
+    <h3 style="margin-top:24px">Availability</h3>
+    <label>Which days and times can you commit to?<textarea name="availability" rows="3" maxlength="500" placeholder="e.g. Monday and Wednesday evenings, flexible on Fridays"></textarea></label>
+
+    <label>Anything else you'd like us to know?<textarea name="extra" rows="3" maxlength="1000"></textarea></label>
+
+    <button class="btn btn-pink" type="submit">Send application</button>
+    <p class="notice ok" role="status">Thanks for your application. We'll be in touch soon.</p>
+    <p class="notice bad" role="alert">Sorry, that didn't send. Please try again, or email us at {EMAIL}.</p>
+  </form>
+</div></div></section>
+<script>
+(function () {{
+  var f = document.getElementById('careers-form');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {{
+    e.preventDefault();
+    var ok = f.querySelector('.notice.ok'), bad = f.querySelector('.notice.bad'), btn = f.querySelector('button[type=submit]');
+    ok.style.display = 'none'; bad.style.display = 'none';
+    if (!f.contact_name.value.trim() || !f.contact_email.value.trim()) {{
+      bad.textContent = 'Please add your name and email address.';
+      bad.style.display = 'block'; return;
+    }}
+    var lines = [];
+    if (f.applicant_age.value.trim()) lines.push('Age: ' + f.applicant_age.value.trim());
+    if (f.applicant_location.value.trim()) lines.push('Location: ' + f.applicant_location.value.trim());
+    if (f.playing_exp.value.trim()) lines.push('Playing experience: ' + f.playing_exp.value.trim());
+    if (f.coaching_exp.value.trim()) lines.push('Coaching experience: ' + f.coaching_exp.value.trim());
+    if (f.qualifications.value) lines.push('Qualifications: ' + f.qualifications.value);
+    if (f.dbs_status.value) lines.push('DBS check: ' + f.dbs_status.value);
+    if (f.first_aid.value) lines.push('First aid: ' + f.first_aid.value);
+    if (f.availability.value.trim()) lines.push('Availability: ' + f.availability.value.trim());
+    if (f.extra.value.trim()) lines.push('Additional info: ' + f.extra.value.trim());
+    var d = {{
+      contact_name: f.contact_name.value.trim(),
+      contact_email: f.contact_email.value.trim(),
+      interest: 'Careers',
+      message: lines.join('\n')
+    }};
+    if (f.contact_phone.value.trim()) d.contact_phone = f.contact_phone.value.trim();
+    if (f.company_website.value.trim()) d.company_website = f.company_website.value.trim();
+    btn.disabled = true; btn.textContent = 'Sending...';
+    fetch('{PORTAL}/api/leads/enquiry', {{ method: 'POST', headers: {{ 'content-type': 'application/json' }}, body: JSON.stringify(d) }})
+      .then(function (r) {{ if (!r.ok) throw new Error(r.status); ok.style.display = 'block'; f.reset(); }})
+      .catch(function () {{ bad.textContent = "Sorry, that didn\\'t send. Please try again, or email us at {EMAIL}."; bad.style.display = 'block'; }})
+      .then(function () {{ btn.disabled = false; btn.textContent = 'Send application'; }});
+  }});
+}})();
+</script>
+"""
+page("careers.html", "Careers | Player Performance", "Join the Player Performance coaching team. We're looking for committed, qualified football coaches in Sutton-in-Ashfield.", careers)
 
 # ---------------------------------------------------------------- Reviews
 reviews = f"""
