@@ -456,7 +456,7 @@ about = f"""
 <section><div class="wrap"><div class="grid g2" style="align-items:center;gap:48px">
   <div><p class="eyebrow">Our story</p><h2>Why we started</h2>{todo("Placeholder: tell Claude your story")}
   <p class="lead">Player Performance was set up to give young players in Ashfield detailed, high-intensity coaching in a positive environment, so they can find their potential and take it onto the pitch on match day.</p>
-  <p>Player Performance is looking to add to our coaching team. We coach children aged 4–16, Monday to Friday, from 1-to-1 sessions to groups of 10.</p>
+  <p>Player Performance is looking to add to our coaching team. We coach children aged 4–16, Monday to Friday, from 1-to-1 sessions to groups of 10. Holding a high standard for every player to find their potential and show it on match day.</p>
 <p><b>Winner, Best Start Up</b> at the Discover Ashfield Awards 2026.</p></div>
   {photo("Team photo", src="img/team.jpg", alt="Three Player Performance coaches in PP kit at PP HQ, the one in the middle holding the Discover Ashfield Best Start Up award", pos="center 70%")}
 </div></div></section>
@@ -491,7 +491,7 @@ careers = f"""
     <h2>Requirements</h2>
     <ul class="ticks">
       <li>Experience coaching football</li>
-      <li>FA Level 2 / UEFA C qualification or equivalent</li>
+      <li>Have or working towards FA Level 2 / UEFA C qualification or equivalent</li>
       <li>Energetic, enthusiastic and passionate about the game</li>
       <li>Committed to making a positive difference to young players</li>
       <li>Reliable, professional and able to work independently</li>
