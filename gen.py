@@ -57,7 +57,7 @@ def page(file, title, desc, body, extra_head=""):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="topbar"><div class="wrap"><span>Youth football development · Ages 4–16 · Sutton-in-Ashfield</span><span class="topbar-right"><span class="socials">{SOCIAL_ICONS}</span><a class="hide-sm" href="{SIGNIN}">Parent portal login</a></span></div></div>
+<div class="topbar"><div class="wrap"><span>Youth football development Â· Ages 4â16 Â· Sutton-in-Ashfield</span><span class="topbar-right"><span class="socials">{SOCIAL_ICONS}</span><a class="hide-sm" href="{SIGNIN}">Parent portal login</a></span></div></div>
 <header class="header" id="top"><div class="wrap">
   <a class="logo" href="index.html" aria-label="Player Performance home"><img src="img/logo-white.png" alt="Player Performance"></a>
   <button class="menu-btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -71,10 +71,10 @@ def page(file, title, desc, body, extra_head=""):
   <div class="cols">
     <div><a class="logo" href="index.html"><img src="img/logo-white.png" alt="Player Performance"></a><p>Built for players who want more. Football development for 4 to 16 year olds at PP HQ, Sutton-in-Ashfield.</p></div>
     <div><h4>Coaching</h4>{foot_links}<a href="{PORTAL}/parent/spaces">Spare spaces this week</a></div>
-    <div><h4>Parents</h4><a href="{SIGNIN}">Portal login</a><a href="reviews.html">Parent reviews</a><a href="faqs.html">FAQs</a><a href="contact.html">Contact us</a></div>
+    <div><h4>Parents</h4><a href="{SIGNIN}">Portal login</a><a href="reviews.html">Parent reviews</a><a href="faqs.html">FAQs</a><a href="contact.html">Contact us</a><a href="careers.html">Careers</a></div>
     <div><h4>Find us</h4><p>PP HQ, Units 2 &amp; 3, Springbank House,<br>2 Craster Street, Sutton-in-Ashfield NG17 5AG</p><a href="mailto:{EMAIL}">{EMAIL}</a><a href="{INSTA}">Instagram @playerperformanceuk</a></div>
   </div>
-  <div class="legal"><span>© 2026 Player Performance</span><span><a href="contact.html" style="display:inline">Privacy</a> · <a href="contact.html" style="display:inline">Terms</a></span></div>
+  <div class="legal"><span>Â© 2026 Player Performance</span><span><a href="contact.html" style="display:inline">Privacy</a> Â· <a href="contact.html" style="display:inline">Terms</a></span></div>
 </div></footer>
 <dialog class="lightbox" aria-label="Photo"><img alt=""><button type="button" class="lb-close" aria-label="Close">Close</button></dialog>
 <script>
@@ -146,18 +146,18 @@ def cta_band(title="Ready to get better?", text="Book your child's first session
 home = f"""
 <section class="hero"><div class="wrap">
   <div>
-    <p class="eyebrow">Football development · Ages 4–16</p>
+    <p class="eyebrow">Football development Â· Ages 4â16</p>
     <h1>Built for players <span class="pink">who want more.</span></h1>
     <p class="lead">We offer group development sessions, small group training and 1-2-1 football coaching, along with our goalkeeper sessions. Based in Sutton-in-Ashfield and Mansfield Woodhouse, we help young players of all ages find their potential and build the confidence to use it on match day.</p>
     <div class="cta"><a class="btn btn-pink arrow" href="group-sessions.html#timetable">Book a session </a><a class="btn btn-line" href="{SIGNIN}">Parent portal</a></div>
-    <p class="tagline">Detail · Intensity · Results</p>
+    <p class="tagline">Detail Â· Intensity Â· Results</p>
   </div>
   {photo("Hero photo", src="img/hero-player.jpg", alt="A Player Performance player in PP kit dribbling the ball on the 4G pitch at PP HQ", pos="center 40%")}
 </div></section>
 
 <section class="dark"><div class="wrap">
   <div class="stats">
-    <div class="stat"><b>4–16+</b><span>Ages we coach</span></div>
+    <div class="stat"><b>4â16+</b><span>Ages we coach</span></div>
     <div class="stat"><b>250+</b><span>Children attending weekly</span></div>
     <div class="stat"><b>Indoor 4G</b><span>All-weather pitch at PP HQ</span></div>
     <div class="stat"><b>FA &amp; UEFA</b><span>Qualified coaches</span></div>
@@ -196,14 +196,14 @@ home = f"""
 <section class="white"><div class="wrap">
   <div class="section-head"><div><p class="eyebrow">Parents say</p><h2>Reviews</h2></div><a class="btn btn-line arrow" href="reviews.html">More about our reviews </a></div>
   <div class="tp-card">
-    <div class="tp-score"><span class="tp-stars" aria-hidden="true">★★★★★</span><b>Excellent</b><span>Rated <strong>4.7 out of 5</strong> from <strong>41+ reviews</strong> on Trustpilot</span></div>
+    <div class="tp-score"><span class="tp-stars" aria-hidden="true">âââââ</span><b>Excellent</b><span>Rated <strong>4.7 out of 5</strong> from <strong>41+ reviews</strong> on Trustpilot</span></div>
     <div class="tp-actions"><a class="btn arrow" href="https://uk.trustpilot.com/review/playerperformance.uk" target="_blank" rel="noopener">Read our reviews </a><a class="btn btn-line arrow" href="https://uk.trustpilot.com/evaluate/playerperformance.uk" target="_blank" rel="noopener">Leave a review </a></div>
   </div>
   <div class="grid g2" style="margin-top:24px">
-    <div class="review"><div class="stars">★★★★★</div><p>The best place we have found to develop our boys ⚽️ Top coaches that bring out the absolute best in the children that attend no matter their ability! Wouldn't want them anywhere else.</p><cite>Emily · Google review</cite></div>
-    <div class="review"><div class="stars">★★★★★</div><p>Excellent football coaching! The sessions are well organised, engaging and enjoyable. The coach is supportive and encouraging, helping the children build their confidence, improve their skills and develop a real love for football. It's great to see the progress the children are making. Highly recommended</p><cite>EB · Trustpilot review</cite></div>
-    <div class="review"><div class="stars">★★★★★</div><p>The best place to be! Dev absolutely loves his sessions at Player Performance... The coaches Jaz, Tomo, Ty, everyone is super friendly. They give every child their attention and work with them through their strengths and weaknesses. The sessions are intense and fun at the same time... I am so grateful to the team for how much support they have given to Dev and would recommend to anyone looking for a place where their child can truly feel supported, can grow in skills and confidence and come out feeling very happy.</p><cite>Payel · Trustpilot review</cite></div>
-    <div class="review"><div class="stars">★★★★★</div><p>Great coaches and great set up for kids that want to get their football skills to that next level! All coaches are brilliant with the kids and make the sessions challenging but still fun! My son loves it and would highly recommend them.</p><cite>Mrs S. C · Trustpilot review</cite></div>
+    <div class="review"><div class="stars">âââââ</div><p>The best place we have found to develop our boys â½ï¸ Top coaches that bring out the absolute best in the children that attend no matter their ability! Wouldn't want them anywhere else.</p><cite>Emily Â· Google review</cite></div>
+    <div class="review"><div class="stars">âââââ</div><p>Excellent football coaching! The sessions are well organised, engaging and enjoyable. The coach is supportive and encouraging, helping the children build their confidence, improve their skills and develop a real love for football. It's great to see the progress the children are making. Highly recommended</p><cite>EB Â· Trustpilot review</cite></div>
+    <div class="review"><div class="stars">âââââ</div><p>The best place to be! Dev absolutely loves his sessions at Player Performance... The coaches Jaz, Tomo, Ty, everyone is super friendly. They give every child their attention and work with them through their strengths and weaknesses. The sessions are intense and fun at the same time... I am so grateful to the team for how much support they have given to Dev and would recommend to anyone looking for a place where their child can truly feel supported, can grow in skills and confidence and come out feeling very happy.</p><cite>Payel Â· Trustpilot review</cite></div>
+    <div class="review"><div class="stars">âââââ</div><p>Great coaches and great set up for kids that want to get their football skills to that next level! All coaches are brilliant with the kids and make the sessions challenging but still fun! My son loves it and would highly recommend them.</p><cite>Mrs S. C Â· Trustpilot review</cite></div>
   </div>
 </div></section>
 {cta_band()}
@@ -213,11 +213,11 @@ page("index.html", "Player Performance | Youth football coaching in Sutton-in-As
 
 # ---------------------------------------------------------------- Group sessions
 TT = {
- "Monday": [("4:30–6pm", "U8s & U9s", "", "few"), ("5:30–7pm", "U10s & U11s", "", "full"), ("6:30–8pm", "U12s & U13s", "High level", "few"), ("7:30–9pm", "U14+", "High level", "full")],
- "Tuesday": [("4:30–6pm", "U9s & U10s", "", "full"), ("5:30–7pm", "U10s & U11s", "High level", "full"), ("6:30–8pm", "U12s & U13s", "High level", "few"), ("7:30–9pm", "U14+", "High level", "full")],
- "Wednesday": [("4–5pm", "Minis ages 4 to 6", "", "full"), ("4:30–6pm", "U7s & U8s", "", "few"), ("5:30–7pm", "U9s & U10s", "", "few"), ("6:30–8pm", "U10s & U11s", "", "few"), ("7:30–9pm", "U12s & U13s", "", "few"), ("8:15–9:30pm", "U14+", "High level", "full")],
- "Thursday": [("4:30–6pm", "U9s & U10s", "", "full"), ("5:30–7pm", "U10s & U11s", "High level", "few"), ("6:30–8pm", "U11s & U12s", "High level", "full"), ("7:30–9pm", "U14+", "High level", "full")],
- "Friday": [("4:30–6pm", "U9s & U10s", "High level", "few"), ("5:30–7pm", "U9s & U10s", "High level", "full"), ("6:30–8pm", "All Girls U10s & U11s", "Girls only", "few"), ("7:30–9pm", "U14+", "High level", "full")],
+ "Monday": [("4:30â6pm", "U8s & U9s", "", "few"), ("5:30â7pm", "U10s & U11s", "", "full"), ("6:30â8pm", "U12s & U13s", "High level", "few"), ("7:30â9pm", "U14+", "High level", "full")],
+ "Tuesday": [("4:30â6pm", "U9s & U10s", "", "full"), ("5:30â7pm", "U10s & U11s", "High level", "full"), ("6:30â8pm", "U12s & U13s", "High level", "few"), ("7:30â9pm", "U14+", "High level", "full")],
+ "Wednesday": [("4â5pm", "Minis ages 4 to 6", "", "full"), ("4:30â6pm", "U7s & U8s", "", "few"), ("5:30â7pm", "U9s & U10s", "", "few"), ("6:30â8pm", "U10s & U11s", "", "few"), ("7:30â9pm", "U12s & U13s", "", "few"), ("8:15â9:30pm", "U14+", "High level", "full")],
+ "Thursday": [("4:30â6pm", "U9s & U10s", "", "full"), ("5:30â7pm", "U10s & U11s", "High level", "few"), ("6:30â8pm", "U11s & U12s", "High level", "full"), ("7:30â9pm", "U14+", "High level", "full")],
+ "Friday": [("4:30â6pm", "U9s & U10s", "High level", "few"), ("5:30â7pm", "U9s & U10s", "High level", "full"), ("6:30â8pm", "All Girls U10s & U11s", "Girls only", "few"), ("7:30â9pm", "U14+", "High level", "full")],
 }
 DAY_SUB = {"Monday": "Group development", "Tuesday": "Group development", "Wednesday": "Minis &amp; group development",
            "Thursday": "Group development", "Friday": "Group development"}
@@ -228,8 +228,8 @@ DAY_NOTE = {
  "Thursday": ("1-2-1s / small groups with Coach Jaz Goundry", "Ask us for available times"),
 }
 DEBDALE = [
- ("Groups with Coach Ty Short", [("6:30–7:30pm", "U8s & U9s", "Mixed", 2), ("7:30–8:30pm", "All Girls U12s & U13s", "Girls only", "full")]),
- ("Goalkeeping with Coach Joe Marson", [("6:30–7:30pm", "U9s & U10s", "Goalkeepers", 2), ("7:30–8:30pm", "U11s, U12s & U13s", "Goalkeepers", "full")]),
+ ("Groups with Coach Ty Short", [("6:30â7:30pm", "U8s & U9s", "Mixed", 2), ("7:30â8:30pm", "All Girls U12s & U13s", "Girls only", "full")]),
+ ("Goalkeeping with Coach Joe Marson", [("6:30â7:30pm", "U9s & U10s", "Goalkeepers", 2), ("7:30â8:30pm", "U11s, U12s & U13s", "Goalkeepers", "full")]),
 ]
 LABEL = {"full": "Full", "few": "1 space left", "open": "Spaces available"}
 
@@ -250,12 +250,12 @@ def slot_rows(slots, where=""):
         if cls == "full":
             btn = f'<button type="button" class="pill full js-full" data-group="{html.escape(label)}" aria-label="{html.escape(label)} is full. Join the waiting list">Full</button>'
         else:
-            btn = f'<a class="pill {cls} pill-book" href="contact.html?group={q}" aria-label="Book {html.escape(label)}: {lab}">{lab} · Book</a>'
+            btn = f'<a class="pill {cls} pill-book" href="contact.html?group={q}" aria-label="Book {html.escape(label)}: {lab}">{lab} Â· Book</a>'
         out += f'<div class="slot"><span class="time">{t}</span><span class="group">{g}{f"<small>{n}</small>" if n else ""}</span>{btn}</div>'
     return out
 
 
-hq = '<div class="venue-head"><h3>PP HQ</h3><p>Springbank House, 2 Craster Street, Sutton-in-Ashfield NG17 5AG · Monday to Friday</p></div><div class="days">'
+hq = '<div class="venue-head"><h3>PP HQ</h3><p>Springbank House, 2 Craster Street, Sutton-in-Ashfield NG17 5AG Â· Monday to Friday</p></div><div class="days">'
 for d, slots in TT.items():
     note = DAY_NOTE.get(d)
     if note:
@@ -266,7 +266,7 @@ for d, slots in TT.items():
         note_html = ""
     hq += f'<div class="day"><h3>{d}</h3><div class="day-sub">{DAY_SUB[d]}</div>{slot_rows(slots, f"{d} (PP HQ)")}{note_html}</div>'
 hq += '</div>'
-deb_head = '<div class="venue-head"><h3>Debdale Park Sports Club</h3><p>Mansfield Woodhouse, NG19 7NS · Fridays</p></div>'
+deb_head = '<div class="venue-head"><h3>Debdale Park Sports Club</h3><p>Mansfield Woodhouse, NG19 7NS Â· Fridays</p></div>'
 deb_panels = []
 for title, slots in DEBDALE:
     deb_panels.append(deb_head + f'<div class="days"><div class="day"><h3>Friday</h3><div class="day-sub">{title}</div>{slot_rows(slots, "Friday (Debdale)" + (" Goalkeeping" if "Goalkeeping" in title else ""))}</div></div>')
@@ -278,10 +278,10 @@ days += "".join(f'<div class="tt-panel" role="tabpanel" id="tt-{k}" aria-labelle
 
 def price_card(title, price, ticks, featured=False):
     lis = "".join(f"<li>{t}</li>" for t in ticks)
-    return (f'<div class="card{" featured" if featured else ""}"><h3>{title}</h3><div class="price">£{price}<small>a month</small></div>'
+    return (f'<div class="card{" featured" if featured else ""}"><h3>{title}</h3><div class="price">Â£{price}<small>a month</small></div>'
             f'<ul class="ticks">{lis}</ul><a class="btn {"btn-pink" if featured else "btn-line"} btn-sm arrow" href="contact.html">Ask about a place </a></div>')
 PRICES = {
- "hq": [price_card("Minis", 32, ["1 session a week", "Wednesday 4–5pm", "Ages 4 to 6"]),
+ "hq": [price_card("Minis", 32, ["1 session a week", "Wednesday 4â5pm", "Ages 4 to 6"]),
         price_card("90 minute session", 77, ["1 session a week", "90 minutes", "Monthly progress report"], True),
         price_card("60 minute session", 65, ["1 session a week", "60 minutes", "Monthly progress report"])],
  "debdale": [price_card("Debdale group sessions", 65, ["1 session a week", "Fridays, 60 minutes", "Debdale Park, Mansfield Woodhouse"], True)],
@@ -324,7 +324,7 @@ groups = f"""
 
 <section class="dark" id="girls"><div class="wrap">
   <div class="grid g2" style="align-items:center;gap:48px">
-    <div><p class="eyebrow">Girls football</p><h2>All Girls group</h2><p class="lead">Fridays 6:30–8pm for U10s and U11s. A group built for girls, with the same high standards as every PP session. Girls are welcome in all our mixed groups too.</p>
+    <div><p class="eyebrow">Girls football</p><h2>All Girls group</h2><p class="lead">Fridays 6:30â8pm for U10s and U11s. A group built for girls, with the same high standards as every PP session. Girls are welcome in all our mixed groups too.</p>
     {todo()}
     <a class="btn btn-pink arrow" href="contact.html">Ask about a place </a></div>
     {photo("Girls group photo", wide=True, src="img/barcelona-girls.jpg", alt="The Player Performance girls squad in their pink and black kit", pos="center 55%")}
@@ -332,7 +332,7 @@ groups = f"""
 </div></section>
 
 <section class="white"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Already with us?</p><h2>Spare spaces</h2></div></div>
-<p class="lead">When a child can't make it, we offer the space to other PP families as a one-off: £15 for 60 minutes, £17.50 for 90 minutes. Offers go out at 10am on session days through the parent portal.</p>
+<p class="lead">When a child can't make it, we offer the space to other PP families as a one-off: Â£15 for 60 minutes, Â£17.50 for 90 minutes. Offers go out at 10am on session days through the parent portal.</p>
 <a class="btn btn-dark arrow" href="{PORTAL}/parent/spaces">See spare spaces </a></div></section>
 {cta_band("Find the right group", "Not sure which group fits? Tell us your child's age and we'll help.")}
 """
@@ -341,7 +341,7 @@ page("group-sessions.html", "Group sessions | Player Performance",
 
 # ---------------------------------------------------------------- 1-2-1
 one = f"""
-<section class="page-hero"><div class="wrap"><p class="eyebrow">1-2-1 coaching · Ages 6+</p><h1>Individual<br>development</h1>
+<section class="page-hero"><div class="wrap"><p class="eyebrow">1-2-1 coaching Â· Ages 6+</p><h1>Individual<br>development</h1>
 <p class="lead">Private sessions built around your child's age, ability and goals. We focus on the details that make the biggest difference to their game.</p>
 <a class="btn btn-pink arrow" href="contact.html">Ask about availability </a></div></section>
 
@@ -357,8 +357,8 @@ one = f"""
   <div class="section-head"><div><p class="eyebrow">Prices</p><h2>1-2-1 packages</h2></div></div>
   {todo("Placeholder: check prices")}
   <div class="grid g2">
-    <div class="card"><h3>Block of 4</h3><div class="price">£120</div><ul class="ticks"><li>Four 1-2-1 sessions</li><li>Plan built for your child</li><li>Progress notes after each block</li></ul><a class="btn btn-line btn-sm arrow" href="contact.html">Enquire </a></div>
-    <div class="card featured"><span class="badge">Best value</span><h3>Quarter (12 sessions)</h3><div class="price">£330</div><ul class="ticks"><li>Twelve 1-2-1 sessions</li><li>Longer-term plan and goals</li><li>Progress report every month</li></ul><a class="btn btn-pink btn-sm arrow" href="contact.html">Enquire </a></div>
+    <div class="card"><h3>Block of 4</h3><div class="price">Â£120</div><ul class="ticks"><li>Four 1-2-1 sessions</li><li>Plan built for your child</li><li>Progress notes after each block</li></ul><a class="btn btn-line btn-sm arrow" href="contact.html">Enquire </a></div>
+    <div class="card featured"><span class="badge">Best value</span><h3>Quarter (12 sessions)</h3><div class="price">Â£330</div><ul class="ticks"><li>Twelve 1-2-1 sessions</li><li>Longer-term plan and goals</li><li>Progress report every month</li></ul><a class="btn btn-pink btn-sm arrow" href="contact.html">Enquire </a></div>
   </div>
 </div></section>
 {cta_band("Book a 1-2-1", "Tell us what your child wants to work on and we'll find a time.")}
@@ -368,7 +368,7 @@ page("1-2-1.html", "1-2-1 football coaching | Player Performance",
 
 # ---------------------------------------------------------------- Goalkeeping
 gk = f"""
-<section class="page-hero"><div class="wrap"><p class="eyebrow">Goalkeeping · U9s to U13s</p><h1>Goalkeeper<br>coaching</h1>
+<section class="page-hero"><div class="wrap"><p class="eyebrow">Goalkeeping Â· U9s to U13s</p><h1>Goalkeeper<br>coaching</h1>
 <p class="lead">Specialist sessions just for goalkeepers, every Friday at Debdale Park Sports Club in Mansfield Woodhouse. Small groups, lots of saves, and the confidence to command their box on match day.</p>
 <a class="btn btn-pink arrow" href="contact.html">Ask about a place </a></div></section>
 
@@ -390,12 +390,12 @@ gk = f"""
     <div class="card"><h3>U9s &amp; U10s</h3><div class="price">6:30<small>to 7:30pm</small></div><ul class="ticks"><li>Every Friday</li><li>60 minutes</li><li>Boys and girls</li></ul></div>
     <div class="card"><h3>U11s, U12s &amp; U13s</h3><div class="price">7:30<small>to 8:30pm</small></div><ul class="ticks"><li>Every Friday</li><li>60 minutes</li><li>Boys and girls</li></ul></div>
   </div>
-  <div class="card featured" style="margin-top:24px"><h3>Price</h3><div class="price">£60<small>a month</small></div><p>One goalkeeping session a week, paid monthly.</p><a class="btn btn-pink btn-sm arrow" href="contact.html">Book a place </a></div>
+  <div class="card featured" style="margin-top:24px"><h3>Price</h3><div class="price">Â£60<small>a month</small></div><p>One goalkeeping session a week, paid monthly.</p><a class="btn btn-pink btn-sm arrow" href="contact.html">Book a place </a></div>
 </div></section>
 {cta_band("Got a keeper?", "Ask us about a place in Friday's goalkeeping sessions.")}
 """
 page("goalkeeping.html", "Goalkeeper coaching | Player Performance",
-     "Specialist goalkeeper coaching for U9s to U13s, Fridays at Debdale Park Sports Club, Mansfield Woodhouse. £60 a month.", gk)
+     "Specialist goalkeeper coaching for U9s to U13s, Fridays at Debdale Park Sports Club, Mansfield Woodhouse. Â£60 a month.", gk)
 
 # ---------------------------------------------------------------- Camps
 camps = f"""
@@ -480,14 +480,14 @@ reviews = f"""
 <p class="lead">Don't just take our word for it. Take a look at what the parents think.</p></div></section>
 <section><div class="wrap">
   <div class="tp-card">
-    <div class="tp-score"><span class="tp-stars" aria-hidden="true">★★★★★</span><b>Excellent</b><span>Rated <strong>4.7 out of 5</strong> from <strong>41+ reviews</strong> on Trustpilot</span></div>
+    <div class="tp-score"><span class="tp-stars" aria-hidden="true">âââââ</span><b>Excellent</b><span>Rated <strong>4.7 out of 5</strong> from <strong>41+ reviews</strong> on Trustpilot</span></div>
     <div class="tp-actions"><a class="btn arrow" href="https://uk.trustpilot.com/review/playerperformance.uk" target="_blank" rel="noopener">Read our reviews </a><a class="btn btn-line arrow" href="https://uk.trustpilot.com/evaluate/playerperformance.uk" target="_blank" rel="noopener">Leave a review </a></div>
   </div>
   <div class="grid g2" style="margin-top:32px">
-    <div class="review"><div class="stars">★★★★★</div><p>The best place we have found to develop our boys ⚽️ Top coaches that bring out the absolute best in the children that attend no matter their ability! Wouldn't want them anywhere else.</p><cite>Emily · Google review</cite></div>
-    <div class="review"><div class="stars">★★★★★</div><p>Excellent football coaching! The sessions are well organised, engaging and enjoyable. The coach is supportive and encouraging, helping the children build their confidence, improve their skills and develop a real love for football. It's great to see the progress the children are making. Highly recommended</p><cite>EB · Trustpilot review</cite></div>
-    <div class="review"><div class="stars">★★★★★</div><p>The best place to be! Dev absolutely loves his sessions at Player Performance... The coaches Jaz, Tomo, Ty, everyone is super friendly. They give every child their attention and work with them through their strengths and weaknesses. The sessions are intense and fun at the same time... I am so grateful to the team for how much support they have given to Dev and would recommend to anyone looking for a place where their child can truly feel supported, can grow in skills and confidence and come out feeling very happy.</p><cite>Payel · Trustpilot review</cite></div>
-    <div class="review"><div class="stars">★★★★★</div><p>Great coaches and great set up for kids that want to get their football skills to that next level! All coaches are brilliant with the kids and make the sessions challenging but still fun! My son loves it and would highly recommend them.</p><cite>Mrs S. C · Trustpilot review</cite></div>
+    <div class="review"><div class="stars">âââââ</div><p>The best place we have found to develop our boys â½ï¸ Top coaches that bring out the absolute best in the children that attend no matter their ability! Wouldn't want them anywhere else.</p><cite>Emily Â· Google review</cite></div>
+    <div class="review"><div class="stars">âââââ</div><p>Excellent football coaching! The sessions are well organised, engaging and enjoyable. The coach is supportive and encouraging, helping the children build their confidence, improve their skills and develop a real love for football. It's great to see the progress the children are making. Highly recommended</p><cite>EB Â· Trustpilot review</cite></div>
+    <div class="review"><div class="stars">âââââ</div><p>The best place to be! Dev absolutely loves his sessions at Player Performance... The coaches Jaz, Tomo, Ty, everyone is super friendly. They give every child their attention and work with them through their strengths and weaknesses. The sessions are intense and fun at the same time... I am so grateful to the team for how much support they have given to Dev and would recommend to anyone looking for a place where their child can truly feel supported, can grow in skills and confidence and come out feeling very happy.</p><cite>Payel Â· Trustpilot review</cite></div>
+    <div class="review"><div class="stars">âââââ</div><p>Great coaches and great set up for kids that want to get their football skills to that next level! All coaches are brilliant with the kids and make the sessions challenging but still fun! My son loves it and would highly recommend them.</p><cite>Mrs S. C Â· Trustpilot review</cite></div>
   </div>
   <div class="grid g2" style="margin-top:32px">
     <div class="card"><h3>Had a session with us?</h3><p>We'd love to hear what you think, good or bad. It helps other parents choose and helps us get better.</p><a class="btn btn-line arrow" href="https://uk.trustpilot.com/evaluate/playerperformance.uk" target="_blank" rel="noopener">Review us on Trustpilot </a></div>
@@ -543,6 +543,108 @@ contact = f"""
 """
 page("contact.html", "Contact | Player Performance", "Contact Player Performance, PP HQ, Sutton-in-Ashfield.", contact)
 
+
+
+# ------------------------------------------------------------------ Careers
+careers = f"""
+<section class="page-hero"><div class="wrap"><p class="eyebrow">Careers</p><h1>We're growing our team</h1>
+<p class="lead">Join us. Make a difference.</p></div></section>
+
+<section class="white"><div class="wrap" style="max-width:720px">
+  <figure style="margin:0 0 16px"><img src="img/careers-coaching.jpg" alt="A Player Performance coach working with a group of young players at PP HQ" loading="lazy" style="width:100%;border-radius:12px"></figure>
+  <p style="text-align:center;color:var(--ink-50);font-size:.95rem;margin-bottom:48px">Coaching the next generation at PP HQ, Sutton-in-Ashfield.</p>
+  <p style="font-size:1.15rem;line-height:1.7">Player Performance is looking to add to our coaching team. We coach children aged 4–16, Monday to Friday, from 1-to-1 sessions to groups of 10 — holding a high standard for every player to find their potential and show it on match day.</p>
+  <p style="font-size:1.15rem;line-height:1.7">As a coach with us, you'll deliver engaging sessions, develop players and help build an environment where young people genuinely get better. If you think you'd be a good fit, fill in the form below.</p>
+</div></section>
+
+<section><div class="wrap"><div class="grid g2" style="gap:48px">
+  <div>
+    <h2>Requirements</h2>
+    <ul class="ticks">
+      <li>Experience coaching football</li>
+      <li>FA Level 2 / UEFA C qualification or equivalent</li>
+      <li>Energetic, enthusiastic and passionate about the game</li>
+      <li>Committed to making a positive difference to young players</li>
+      <li>Reliable, professional and able to work independently</li>
+    </ul>
+    <h2 style="margin-top:40px">What you get</h2>
+    <ul class="ticks">
+      <li>1–3 evenings of coaching per week, with flexible opportunities</li>
+      <li>Competitive pay</li>
+      <li>Opportunities to develop your coaching career and gain valuable experience</li>
+      <li>Be part of an ambitious, growing football programme</li>
+    </ul>
+    <p style="margin-top:32px"><b>Any questions?</b><br>Email us at <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+  </div>
+  <form class="form card" id="careers-form" novalidate>
+    <div class="hp" aria-hidden="true"><label>Leave this empty<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
+    <h3>Your details</h3>
+    <label>Full name<input name="contact_name" autocomplete="name" required maxlength="120"></label>
+    <label>Email<input name="contact_email" type="email" autocomplete="email" required maxlength="254"></label>
+    <label>Phone<input name="contact_phone" type="tel" autocomplete="tel" maxlength="30"></label>
+    <label>Age<input name="applicant_age" inputmode="numeric" maxlength="2"></label>
+    <label>Location<input name="applicant_location" maxlength="120" placeholder="e.g. Sutton-in-Ashfield"></label>
+
+    <h3 style="margin-top:24px">Football background</h3>
+    <label>Playing experience<textarea name="playing_exp" rows="3" maxlength="1000" placeholder="Where have you played, at what level?"></textarea></label>
+    <label>Coaching experience<textarea name="coaching_exp" rows="3" maxlength="1000" placeholder="Where have you coached, age groups, how long?"></textarea></label>
+    <label>Qualifications<select name="qualifications"><option value="">Choose one</option><option>FA Level 1</option><option>FA Level 2 / UEFA C</option><option>FA Level 3 / UEFA B or higher</option><option>Working towards a qualification</option><option>Other</option></select></label>
+
+    <h3 style="margin-top:24px">Safeguarding</h3>
+    <label>DBS check<select name="dbs_status"><option value="">Choose one</option><option>Yes — Enhanced DBS on the update service</option><option>Yes — Enhanced DBS (not on the update service)</option><option>Yes — Basic DBS</option><option>No — willing to get one</option><option>No</option></select></label>
+    <label>First aid certificate<select name="first_aid"><option value="">Choose one</option><option>Yes — in date</option><option>Yes — expired, willing to renew</option><option>No — willing to get one</option><option>No</option></select></label>
+
+    <h3 style="margin-top:24px">Availability</h3>
+    <label>Which days and times can you commit to?<textarea name="availability" rows="3" maxlength="500" placeholder="e.g. Monday and Wednesday evenings, flexible on Fridays"></textarea></label>
+
+    <label>Anything else you'd like us to know?<textarea name="extra" rows="3" maxlength="1000"></textarea></label>
+
+    <button class="btn btn-pink" type="submit">Send application</button>
+    <p class="notice ok" role="status">Thanks for your application. We'll be in touch soon.</p>
+    <p class="notice bad" role="alert">Sorry, that didn't send. Please try again, or email us at {EMAIL}.</p>
+  </form>
+</div></div></section>
+<script>
+(function () {{
+  var f = document.getElementById('careers-form');
+  if (!f) return;
+  f.addEventListener('submit', function (e) {{
+    e.preventDefault();
+    var ok = f.querySelector('.notice.ok'), bad = f.querySelector('.notice.bad'), btn = f.querySelector('button[type=submit]');
+    ok.style.display = 'none'; bad.style.display = 'none';
+    if (!f.contact_name.value.trim() || !f.contact_email.value.trim()) {{
+      bad.textContent = 'Please add your name and email address.';
+      bad.style.display = 'block'; return;
+    }}
+    var lines = [];
+    if (f.applicant_age.value.trim()) lines.push('Age: ' + f.applicant_age.value.trim());
+    if (f.applicant_location.value.trim()) lines.push('Location: ' + f.applicant_location.value.trim());
+    if (f.playing_exp.value.trim()) lines.push('Playing experience: ' + f.playing_exp.value.trim());
+    if (f.coaching_exp.value.trim()) lines.push('Coaching experience: ' + f.coaching_exp.value.trim());
+    if (f.qualifications.value) lines.push('Qualifications: ' + f.qualifications.value);
+    if (f.dbs_status.value) lines.push('DBS check: ' + f.dbs_status.value);
+    if (f.first_aid.value) lines.push('First aid: ' + f.first_aid.value);
+    if (f.availability.value.trim()) lines.push('Availability: ' + f.availability.value.trim());
+    if (f.extra.value.trim()) lines.push('Additional info: ' + f.extra.value.trim());
+    var d = {{
+      contact_name: f.contact_name.value.trim(),
+      contact_email: f.contact_email.value.trim(),
+      interest: 'Careers',
+      message: lines.join('\n')
+    }};
+    if (f.contact_phone.value.trim()) d.contact_phone = f.contact_phone.value.trim();
+    if (f.company_website.value.trim()) d.company_website = f.company_website.value.trim();
+    btn.disabled = true; btn.textContent = 'Sending...';
+    fetch('{PORTAL}/api/leads/enquiry', {{ method: 'POST', headers: {{ 'content-type': 'application/json' }}, body: JSON.stringify(d) }})
+      .then(function (r) {{ if (!r.ok) throw new Error(r.status); ok.style.display = 'block'; f.reset(); }})
+      .catch(function () {{ bad.textContent = "Sorry, that didn\\'t send. Please try again, or email us at {EMAIL}."; bad.style.display = 'block'; }})
+      .then(function () {{ btn.disabled = false; btn.textContent = 'Send application'; }});
+  }});
+}})();
+</script>
+"""
+page("careers.html", "Careers | Player Performance", "Join the Player Performance coaching team. We're looking for committed, qualified football coaches in Sutton-in-Ashfield.", careers)
+
 # ---------------------------------------------------------------- Mindset check-up
 MINDSET_Q = [
  ("Making mistakes", "Gets upset or stops trying after a mistake", "Recovers, but it takes a while", "Shakes it off and goes again straight away"),
@@ -566,7 +668,7 @@ mindset = f"""
 <section class="white" id="guide"><div class="wrap"><div class="grid g2 gd-grid">
   <div class="gd-cover"><img src="guide-cover.jpg" alt="Cover of the free guide Across the White Line: a mindset guide for players aged 10 to 16" loading="lazy"></div>
   <div>
-    <p class="eyebrow">Free guide · Players aged 10–16</p><h2>Across the White Line</h2>
+    <p class="eyebrow">Free guide Â· Players aged 10â16</p><h2>Across the White Line</h2>
     <p class="lead">Our free 12-page guide for parents and players: why confident trainers freeze on match day, and simple tools to help them take their best self across the white line.</p>
     <form class="form gd-form" novalidate>
       <h3 style="margin:0">Get the free guide</h3>
@@ -705,7 +807,7 @@ notfound = f"""
 """
 page("404.html", "Page moved | Player Performance", "Player Performance has a new website.", notfound,
      extra_head='\n<base href="/">\n<meta name="robots" content="noindex">' + OLD_LINKS)
-pages = [f for f, _ in NAV]
+pages = [f for f, _ in NAV] + ["careers.html"]
 (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(
     f'  <url><loc>{SITE}/{"" if f == "index.html" else f}</loc></url>\n' for f in pages) + '</urlset>\n', encoding="utf-8")
 (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
