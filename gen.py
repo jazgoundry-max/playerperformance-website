@@ -641,8 +641,8 @@ MINDSET_Q = [
 ]
 _mq = json.dumps([{"q": q, "red": r, "amber": a, "green": g} for q, r, a, g in MINDSET_Q])
 mindset = f"""
-<section class="page-hero"><div class="wrap">
-<a class="btn btn-pink arrow" href="#questionnaire" style="margin-bottom:28px">Mindset questionnaire </a>
+<section class="page-hero ms-hero"><div class="wrap">
+<div class="ms-top"><a class="btn btn-pink arrow" href="#questionnaire">Mindset questionnaire </a></div>
 <p class="eyebrow">Mindset</p><h1>Shines in training.<br>A different player on match day?</h1>
 <p class="lead">You're not alone. It's the thing we hear from parents more than anything else, and it's the part of the game nobody teaches.</p></div></section>
 
@@ -654,22 +654,53 @@ mindset = f"""
     <form class="form gd-form" novalidate>
       <h3 style="margin:0">Get the free guide</h3>
       <div class="hp" aria-hidden="true"><label>Leave this empty<input name="company_website" tabindex="-1" autocomplete="off"></label></div>
-      <label>Your name<input name="parent_name" autocomplete="name" required maxlength="120"></label>
+      <label>Parent's name<input name="parent_name" autocomplete="name" required maxlength="120"></label>
       <label>Email<input name="parent_email" type="email" autocomplete="email" required maxlength="254"></label>
       <label>Phone number<input name="phone" type="tel" autocomplete="tel" required maxlength="20"></label>
       <label class="ms-consent"><span><input type="checkbox" name="consent"> I'm happy for Player Performance to email me the guide and contact me about mindset mentoring.</span></label>
       <p class="notice bad" role="alert"></p>
       <p class="notice ok" role="status">Check your inbox, the guide is on its way.</p>
-      <button class="btn btn-pink arrow" type="submit">Send me the guide </button>
-      <p class="gd-privacy">We only use your details to send you the guide and to talk to you about mindset mentoring. We never share them, and you can ask us to delete them at any time.</p>
+      <button class="btn btn-pink arrow" type="submit">Get the free guide </button>
+      <p class="gd-privacy">We only ask for a parent's details, never your child's. We use them to send you the guide, a few short follow-up emails and to talk to you about mindset mentoring. We never share them. Reply STOP to any email to stop them, and ask us any time to delete your details.</p>
     </form>
   </div>
 </div></div></section>
 
-<section class="dark"><div class="wrap" style="max-width:820px;text-align:center">
-  <p class="eyebrow">1-2-1 mindset mentoring</p><h2>Mindset mentoring, built by an ex-player for players.</h2>
-  <p class="lead" style="margin-left:auto;margin-right:auto;color:rgba(255,255,255,.75)">A complete platform to help your child get past the things holding them back on match day.</p>
-  <a class="btn btn-pink arrow" href="https://wa.me/447955722914?text=Hi%20Jaz%2C%20I%27ve%20read%20Across%20the%20White%20Line%20and%20I%27d%20like%20to%20book%20a%20free%20chat%20about%20my%20child." target="_blank" rel="noopener">Book a free chat </a>
+<section id="workbook"><div class="wrap"><div class="grid g2 gd-grid wb-grid">
+  <div>
+    <p class="eyebrow">Workbook · £20</p><h2>The Mindset Workbook</h2>
+    <p class="lead">6 tools, 6 weeks, for players and parents to work through together. Mistakes, big-game nerves, bad form, comparing yourself, being dropped and injury.</p>
+    <p class="ms-price">£20. Instant download.</p>
+    <a class="btn btn-pink arrow" href="https://square.link/u/DS4wdDvq" target="_blank" rel="noopener">Get the workbook </a>
+  </div>
+  <div class="gd-cover"><div class="wb-cover" role="img" aria-label="Cover of The Mindset Workbook by Jaz Goundry, Player Performance">
+    <div class="wb-top"><img src="logo-white.png" alt=""><p>Mindset workbook<br>Player + parent</p></div>
+    <div class="wb-mid">
+      <p class="wb-kicker">6 tools · 6 weeks · work through it together</p>
+      <p class="wb-title">The mindset<br>workbook</p>
+      <div class="wb-bar"></div>
+      <p class="wb-blurb">Six tools for the moments that knock players off their game. One tool a week, three simple steps each, and a task to try on the pitch.</p>
+    </div>
+    <div class="wb-foot"><div><div class="wb-bar" style="margin:0 0 1.8cqw"></div><p class="wb-tag">From the training pitch to match day</p></div><p class="wb-by">by Jaz Goundry<br>playerperformance.uk</p></div>
+  </div></div>
+</div></div></section>
+
+<section class="dark" id="mentoring"><div class="wrap" style="max-width:820px">
+  <p class="eyebrow">1-1 mindset mentoring</p><h2>Mindset mentoring, built by an ex-player for players.</h2>
+  <p class="lead" style="color:rgba(255,255,255,.75)">A complete platform to help your child get past the things holding them back on match day.</p>
+  <ul class="ticks">
+    <li>A weekly traffic-light check for your child and for you</li>
+    <li>A 20-minute 1-1 call with Jaz every month</li>
+    <li>Messaging support between calls</li>
+    <li>A monthly score so you can see the progress</li>
+  </ul>
+  <p class="ms-price" style="color:#fff">£45 a month.</p>
+  <!-- Founding offer: one sentence on its own. It also hides itself from 1 Jan 2027 (see MINDSET_JS). -->
+  <p class="ms-founding" id="founding-offer">Founding families who join before 1 January pay £35 a month, locked in. Only 10 spaces.</p>
+  <div class="ms-chat" style="margin-top:28px">
+    <a class="btn btn-pink arrow" href="https://calendar.app.google/1MHHw9Zh9tF6z9im8" target="_blank" rel="noopener">Book a free chat </a><br>
+    <a class="ms-small-link" href="https://wa.me/447955722914?text=Hi%20Jaz%2C%20I%27ve%20read%20Across%20the%20White%20Line%20and%20I%27d%20like%20to%20book%20a%20free%20chat%20about%20my%20child." target="_blank" rel="noopener">Or message Jaz on WhatsApp</a>
+  </div>
 </div></section>
 
 <section class="white" id="questionnaire"><div class="wrap" style="max-width:820px">
@@ -702,6 +733,9 @@ MINDSET_JS = """
 <script>
 (function () {
   var Q = __MQ__, API = '__PORTAL__/api/mindset';
+  var GUIDE_API = 'https://app.windmill.dev/api/r/player-performance/mindset/guide';
+  var fo = document.getElementById('founding-offer');
+  if (fo && new Date() >= new Date('2027-01-01T00:00:00Z')) fo.remove();
   var gf = document.querySelector('.gd-form');
   if (gf) gf.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -711,10 +745,10 @@ MINDSET_JS = """
     if (!gf.parent_name.value.trim() || !/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(em) || !/^[0-9 +()-]{7,20}$/.test(ph)) { bad.textContent = 'Please add your name, a valid email and a phone number.'; bad.style.display = 'block'; return; }
     if (!gf.consent.checked) { bad.textContent = 'Please tick the box so we can send you the guide.'; bad.style.display = 'block'; return; }
     btn.disabled = true; btn.textContent = 'Sending...';
-    fetch('__PORTAL__/api/guide', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ parent_name: gf.parent_name.value.trim(), parent_email: em, phone: ph, consent: true, company_website: gf.company_website.value }) })
+    fetch(GUIDE_API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ parent_name: gf.parent_name.value.trim(), parent_email: em, phone: ph, consent: true, company_website: gf.company_website.value }) })
       .then(function (r) { if (!r.ok) throw new Error(r.status); ok.style.display = 'block'; gf.reset(); })
       .catch(function () { bad.textContent = "Sorry, that didn't send. Please try again, or email inquiries@playerperformance.uk."; bad.style.display = 'block'; })
-      .then(function () { btn.disabled = false; btn.textContent = 'Send me the guide'; });
+      .then(function () { btn.disabled = false; btn.textContent = 'Get the free guide'; });
   });
   var start = document.querySelector('.ms-start'), quiz = document.querySelector('.ms-quiz'), res = document.querySelector('.ms-result');
   if (!start) return;
@@ -761,8 +795,32 @@ MINDSET_JS = """
   });
 })();
 </script>"""
-page("mindset.html", "Mindset check-up | Player Performance", "Free mindset guide Across the White Line and a 10-question mindset check-up for young footballers aged 10 to 16.",
-     mindset + MINDSET_JS.replace("__MQ__", _mq).replace("__PORTAL__", PORTAL))
+# Styles only the Mindset page uses (hero centring, prices, workbook cover drawn in code from the workbook's own cover page)
+MINDSET_CSS = """<style>
+  .ms-top { text-align:center; margin-bottom:28px; }
+  .ms-hero { text-align:center; }
+  .ms-hero .lead { margin-left:auto; margin-right:auto; }
+  .ms-price { font-family:Anton, Impact, sans-serif; font-size:28px; letter-spacing:.01em; margin:4px 0 18px; }
+  .ms-small-link { display:inline-block; margin-top:14px; font-size:14px; color:rgba(255,255,255,.8); text-decoration:underline; }
+  .ms-founding { font-weight:600; color:#fff; }
+  .ms-chat { text-align:center; }
+  .wb-cover { container-type:inline-size; width:100%; max-width:380px; aspect-ratio:794/1123; margin:0 auto; box-sizing:border-box; background:#0B0B0D; color:#fff; font-family:Poppins, sans-serif; padding:7.05cqw 8.06cqw; display:flex; flex-direction:column; overflow:hidden; border-radius:var(--radius); box-shadow:0 18px 40px rgba(11,11,13,.25); }
+  .wb-cover p { margin:0; }
+  .wb-top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .wb-top img { width:21.4cqw; height:auto; box-shadow:none; border-radius:0; margin:0; max-width:none; }
+  .wb-top p, .wb-by { font-size:1.64cqw; font-weight:600; letter-spacing:.06em; text-transform:uppercase; text-align:right; line-height:1.5; }
+  .wb-by { text-transform:none; letter-spacing:0; font-weight:400; opacity:.8; }
+  .wb-mid { margin-top:17.6cqw; }
+  .wb-kicker { font-size:2.27cqw; font-weight:500; color:#FA0059; margin-bottom:2.27cqw !important; }
+  .wb-title { font-family:Anton, Impact, sans-serif; text-transform:uppercase; font-size:15.6cqw; line-height:.96; letter-spacing:.01em; }
+  .wb-bar { width:5.04cqw; height:.5cqw; background:#FA0059; margin-top:2.77cqw; }
+  .wb-blurb { margin-top:2.77cqw !important; font-size:2.27cqw; line-height:1.6; max-width:73cqw; opacity:.9; }
+  .wb-foot { margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; gap:3cqw; }
+  .wb-tag { font-family:Anton, Impact, sans-serif; text-transform:uppercase; font-size:3.53cqw; letter-spacing:.01em; }
+  @media (max-width: 760px) { .wb-grid .gd-cover { order:-1; } }
+</style>"""
+page("mindset.html", "Mindset | Player Performance", "Free mindset guide Across the White Line, The Mindset Workbook, 1-1 mindset mentoring with Jaz and a free 10-question mindset check-up for young footballers aged 10 to 16.",
+     mindset + MINDSET_JS.replace("__MQ__", _mq).replace("__PORTAL__", PORTAL), MINDSET_CSS)
 
 # ---------------------------------------------------------------- Google: old Square links, sitemap, robots
 OLD_LINKS = """
