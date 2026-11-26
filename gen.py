@@ -535,42 +535,24 @@ careers = f"""
   </form>
 </div></div></section>
 <script>
-(function () {{
-  var f = document.getElementById('careers-form');
-  if (!f) return;
-  f.addEventListener('submit', function (e) {{
+(function(){
+  var f=document.getElementById('careers-form');if(!f)return;
+  f.addEventListener('submit',function(e){
     e.preventDefault();
-    var ok = f.querySelector('.notice.ok'), bad = f.querySelector('.notice.bad'), btn = f.querySelector('button[type=submit]');
-    ok.style.display = 'none'; bad.style.display = 'none';
-    if (!f.contact_name.value.trim() || !f.contact_email.value.trim()) {{
-      bad.textContent = 'Please add your name and email address.';
-      bad.style.display = 'block'; return;
-    }}
-    var lines = [];
-    if (f.applicant_age.value.trim()) lines.push('Age: ' + f.applicant_age.value.trim());
-    if (f.applicant_location.value.trim()) lines.push('Location: ' + f.applicant_location.value.trim());
-    if (f.playing_exp.value.trim()) lines.push('Playing experience: ' + f.playing_exp.value.trim());
-    if (f.coaching_exp.value.trim()) lines.push('Coaching experience: ' + f.coaching_exp.value.trim());
-    if (f.qualifications.value) lines.push('Qualifications: ' + f.qualifications.value);
-    if (f.dbs_status.value) lines.push('DBS check: ' + f.dbs_status.value);
-    if (f.first_aid.value) lines.push('First aid: ' + f.first_aid.value);
-    if (f.availability.value.trim()) lines.push('Availability: ' + f.availability.value.trim());
-    if (f.extra.value.trim()) lines.push('Additional info: ' + f.extra.value.trim());
-    var d = {{
-      contact_name: f.contact_name.value.trim(),
-      contact_email: f.contact_email.value.trim(),
-      interest: 'Careers',
-      message: lines.join('\n')
-    }};
-    if (f.contact_phone.value.trim()) d.contact_phone = f.contact_phone.value.trim();
-    if (f.company_website.value.trim()) d.company_website = f.company_website.value.trim();
-    btn.disabled = true; btn.textContent = 'Sending...';
-    fetch('{PORTAL}/api/leads/enquiry', {{ method: 'POST', headers: {{ 'content-type': 'application/json' }}, body: JSON.stringify(d) }})
-      .then(function (r) {{ if (!r.ok) throw new Error(r.status); ok.style.display = 'block'; f.reset(); }})
-      .catch(function () {{ bad.textContent = "Sorry, that didn\\'t send. Please try again, or email us at {EMAIL}."; bad.style.display = 'block'; }})
-      .then(function () {{ btn.disabled = false; btn.textContent = 'Send application'; }});
-  }});
-}})();
+    var ok=f.querySelector('.notice.ok'),bad=f.querySelector('.notice.bad'),btn=f.querySelector('button[type="submit"]');
+    if(ok)ok.hidden=true;if(bad)bad.hidden=true;
+    var v=function(n){var el=f.querySelector('[name="'+n+'"]');return el?el.value.trim():''};
+    if(v('company_website')){return}
+    if(!v('contact_name')||(!v('contact_email')&&!v('contact_phone'))){if(bad){bad.textContent='Please fill in your name and either email or phone.';bad.hidden=false}return}
+    btn.disabled=true;btn.textContent='Sending...';
+    var d={name:v('contact_name'),email:v('contact_email'),phone:v('contact_phone'),age:v('applicant_age'),location:v('applicant_location'),playing_experience:v('playing_exp'),coaching_experience:v('coaching_exp'),qualifications:v('qualifications'),dbs_check:v('dbs_status'),first_aid:v('first_aid'),availability:v('availability'),anything_else:v('extra')};
+    fetch('https://app.windmill.dev/api/r/player-performance/careers/apply',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)})
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+    .then(function(){if(ok){ok.hidden=false}f.reset()})
+    .catch(function(){if(bad){bad.hidden=false}})
+    .then(function(){btn.disabled=false;btn.textContent='Send application'});
+  });
+})();
 </script>
 """
 page("careers.html", "Careers | Player Performance", "Join the Player Performance coaching team. We're looking for committed, qualified football coaches in Sutton-in-Ashfield.", careers)
