@@ -535,24 +535,24 @@ careers = f"""
   </form>
 </div></div></section>
 <script>
-(function(){
+(function(){{
   var f=document.getElementById('careers-form');if(!f)return;
-  f.addEventListener('submit',function(e){
+  f.addEventListener('submit',function(e){{
     e.preventDefault();
     var ok=f.querySelector('.notice.ok'),bad=f.querySelector('.notice.bad'),btn=f.querySelector('button[type="submit"]');
     if(ok)ok.hidden=true;if(bad)bad.hidden=true;
-    var v=function(n){var el=f.querySelector('[name="'+n+'"]');return el?el.value.trim():''};
-    if(v('company_website')){return}
-    if(!v('contact_name')||(!v('contact_email')&&!v('contact_phone'))){if(bad){bad.textContent='Please fill in your name and either email or phone.';bad.hidden=false}return}
+    var v=function(n){{var el=f.querySelector('[name="'+n+'"]');return el?el.value.trim():''}};
+    if(v('company_website')){{return}}
+    if(!v('contact_name')||(!v('contact_email')&&!v('contact_phone'))){{if(bad){{bad.textContent='Please fill in your name and either email or phone.';bad.hidden=false}}return}}
     btn.disabled=true;btn.textContent='Sending...';
-    var d={name:v('contact_name'),email:v('contact_email'),phone:v('contact_phone'),age:v('applicant_age'),location:v('applicant_location'),playing_experience:v('playing_exp'),coaching_experience:v('coaching_exp'),qualifications:v('qualifications'),dbs_check:v('dbs_status'),first_aid:v('first_aid'),availability:v('availability'),anything_else:v('extra')};
-    fetch('https://app.windmill.dev/api/r/player-performance/careers/apply',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(d)})
-    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
-    .then(function(){if(ok){ok.hidden=false}f.reset()})
-    .catch(function(){if(bad){bad.hidden=false}})
-    .then(function(){btn.disabled=false;btn.textContent='Send application'});
-  });
-})();
+    var d={{name:v('contact_name'),email:v('contact_email'),phone:v('contact_phone'),age:v('applicant_age'),location:v('applicant_location'),playing_experience:v('playing_exp'),coaching_experience:v('coaching_exp'),qualifications:v('qualifications'),dbs_check:v('dbs_status'),first_aid:v('first_aid'),availability:v('availability'),anything_else:v('extra')}};
+    fetch('https://app.windmill.dev/api/r/player-performance/careers/apply',{{method:'POST',headers:{{'content-type':'application/json'}},body:JSON.stringify(d)}})
+    .then(function(r){{if(!r.ok)throw new Error(r.status);return r.json()}})
+    .then(function(){{if(ok){{ok.hidden=false}}f.reset()}})
+    .catch(function(){{if(bad){{bad.hidden=false}}}})
+    .then(function(){{btn.disabled=false;btn.textContent='Send application'}});
+  }});
+}})();
 </script>
 """
 page("careers.html", "Careers | Player Performance", "Join the Player Performance coaching team. We're looking for committed, qualified football coaches in Sutton-in-Ashfield.", careers)
